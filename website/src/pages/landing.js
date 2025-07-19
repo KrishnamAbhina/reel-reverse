@@ -4,84 +4,66 @@ const Landing = () => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setLoaded(true), 100);
-    
-    // Add CSS animations
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes float1 {
-        0%, 100% { transform: translateY(0px) translateX(0px); }
-        33% { transform: translateY(-20px) translateX(10px); }
-        66% { transform: translateY(10px) translateX(-5px); }
-      }
-      
-      @keyframes float2 {
-        0%, 100% { transform: translateY(0px) translateX(0px); }
-        33% { transform: translateY(15px) translateX(-10px); }
-        66% { transform: translateY(-10px) translateX(8px); }
-      }
-      
-      @keyframes float3 {
-        0%, 100% { transform: translateY(0px) translateX(0px); }
-        50% { transform: translateY(-15px) translateX(12px); }
-      }
-    `;
-    document.head.appendChild(style);
-    
-    return () => {
-      document.head.removeChild(style);
-    };
+    setTimeout(() => setLoaded(true), 300);
   }, []);
 
   return (
     <div style={styles.container}>
-      {/* Background floating elements */}
-      <div style={styles.floatingElement1}></div>
-      <div style={styles.floatingElement2}></div>
-      <div style={styles.floatingElement3}></div>
-      <div style={styles.floatingElement4}></div>
-      <div style={styles.floatingElement5}></div>
-      
-      {/* Glass texture overlay */}
-      <div style={styles.glassTexture}></div>
-      
-      {/* Main glassmorphic card */}
-      <div
+      {/* Navigation */}
+      <nav style={styles.navbar}>
+        <div style={styles.navLeft}>
+          <a href="#" style={styles.navLink}>About</a>
+          <a href="#" style={styles.navLink}>Services</a>
+        </div>
+        
+        <div style={styles.logo}>WEN LAUNCH</div>
+        
+        <div style={styles.navRight}>
+          <a href="#" style={styles.navLink}>Cases</a>
+          <a href="#" style={styles.navLink}>Contact</a>
+        </div>
+      </nav>
+
+      {/* Creative Studio Badge */}
+      <div style={styles.creativeBadge}>
+        <div style={styles.creativeText}>Creative</div>
+        <div style={styles.studioText}>STUDIO</div>
+      </div>
+
+      {/* Arrow Icon */}
+      <div style={styles.arrowIcon}>↗</div>
+
+      {/* Main Content */}
+      <main 
         style={{
-          ...styles.glassCard,
+          ...styles.mainContent,
           opacity: loaded ? 1 : 0,
-          transform: loaded ? 'translateY(0) scale(1)' : 'translateY(50px) scale(0.95)',
-          transition: 'opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), transform 1.5s cubic-bezier(0.4, 0, 0.2, 1)',
+          transform: loaded ? 'translateY(0)' : 'translateY(30px)',
+          transition: 'opacity 1s ease-out, transform 1s ease-out',
         }}
       >
-        {/* Inner glass reflection */}
-        <div style={styles.glassReflection}></div>
-        
-        {/* Hero */}
-        <div style={styles.hero}>
-          <p style={styles.intro}>👋 My name is Abhina and I am a creative editor</p>
+        <h1 style={styles.mainTitle}>
+          WE ARE<br />
+          FULL-SERVICE<br />
+          <span style={styles.agencyText}>AGENCY</span>
+        </h1>
 
-          <h1 style={styles.title}>
-            Webdesigner <br />
-            <span style={styles.outline}> & Video Editor</span>
-          </h1>
-
-          <p style={styles.location}>based in India.</p>
-
-          <div style={styles.buttons}>
-            <button style={styles.filledBtn}>You need a designer</button>
-            <button style={styles.outlinedBtn}>You need a video editor</button>
-          </div>
+        <div style={styles.description}>
+          <p style={styles.descriptionText}>
+            The first full-stack Web3<br />
+            creative agency. Integrating AI<br />
+            technology to deliver best-in-<br />
+            class client experience.
+          </p>
         </div>
-        
-        {/* Small info badge */}
-        <div style={styles.infoBadge}>
-          <div style={styles.badgeIcon}>🎨</div>
-          <div>
-            <div style={styles.badgeTitle}>Isolated Objects &</div>
-            <div style={styles.badgeSubtitle}>Editable Colors</div>
-          </div>
+      </main>
+
+      {/* Scroll Indicator */}
+      <div style={styles.scrollIndicator}>
+        <div style={styles.scrollCircle}>
+          <div style={styles.scrollArrow}>↓</div>
         </div>
+        <div style={styles.scrollText}>SCROLL FOR MORE</div>
       </div>
     </div>
   );
@@ -92,279 +74,196 @@ export default Landing;
 // ---------- Styles ----------
 const styles = {
   container: {
-    background: `
-      url('/images/bubble-bg.jpg') center/cover no-repeat,
-      linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5))
-    `,
-    color: '#fff',
+    backgroundColor: '#1a1a1a',
+    color: '#ffffff',
     minHeight: '100vh',
-    padding: '2rem',
-    fontFamily: "'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+    fontFamily: "'Helvetica Neue', 'Arial', sans-serif",
     position: 'relative',
     overflow: 'hidden',
+  },
+
+  // Navigation
+  navbar: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '2rem 3rem',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 100,
+    backgroundColor: 'rgba(26, 26, 26, 0.9)',
+    backdropFilter: 'blur(10px)',
+  },
+
+  navLeft: {
+    display: 'flex',
+    gap: '2.5rem',
+  },
+
+  navRight: {
+    display: 'flex',
+    gap: '2.5rem',
+  },
+
+  navLink: {
+    color: '#ffffff',
+    textDecoration: 'none',
+    fontSize: '0.95rem',
+    fontWeight: '400',
+    letterSpacing: '0.5px',
+    transition: 'opacity 0.3s ease',
+    cursor: 'pointer',
+  },
+
+  logo: {
+    fontSize: '1.1rem',
+    fontWeight: '600',
+    letterSpacing: '2px',
+    color: '#ffffff',
+  },
+
+  // Creative Studio Badge
+  creativeBadge: {
+    position: 'fixed',
+    bottom: '3rem',
+    left: '3rem',
+    zIndex: 100,
+  },
+
+  creativeText: {
+    fontSize: '0.85rem',
+    fontWeight: '300',
+    letterSpacing: '1px',
+    color: '#ffffff',
+    marginBottom: '0.2rem',
+  },
+
+  studioText: {
+    fontSize: '0.85rem',
+    fontWeight: '600',
+    letterSpacing: '2px',
+    color: '#ffffff',
+  },
+
+  // Arrow Icon
+  arrowIcon: {
+    position: 'fixed',
+    top: '50%',
+    right: '3rem',
+    fontSize: '2rem',
+    color: '#ffffff',
+    transform: 'translateY(-50%)',
+    zIndex: 100,
+  },
+
+  // Main Content
+  mainContent: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    minHeight: '100vh',
+    padding: '0 3rem',
+    paddingTop: '6rem',
   },
-  
-  // Enhanced floating background elements
-  floatingElement1: {
-    position: 'absolute',
-    top: '15%',
-    right: '20%',
-    width: '180px',
-    height: '180px',
-    background: 'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%)',
-    borderRadius: '50%',
-    filter: 'blur(3px)',
-    zIndex: 0,
-    animation: 'float1 6s ease-in-out infinite',
+
+  mainTitle: {
+    fontSize: 'clamp(3rem, 8vw, 6rem)',
+    fontWeight: '700',
+    lineHeight: '0.9',
+    letterSpacing: '-2px',
+    color: '#ffffff',
+    margin: 0,
+    flex: 1,
   },
-  
-  floatingElement2: {
-    position: 'absolute',
-    bottom: '25%',
-    left: '15%',
-    width: '120px',
-    height: '120px',
-    background: 'radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 50%, transparent 100%)',
-    borderRadius: '50%',
-    filter: 'blur(4px)',
-    zIndex: 0,
-    animation: 'float2 8s ease-in-out infinite',
+
+  agencyText: {
+    fontStyle: 'italic',
+    fontWeight: '300',
   },
-  
-  floatingElement3: {
-    position: 'absolute',
-    top: '60%',
-    right: '10%',
-    width: '90px',
-    height: '90px',
-    background: 'radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%)',
-    borderRadius: '50%',
-    filter: 'blur(5px)',
-    zIndex: 0,
-    animation: 'float3 7s ease-in-out infinite',
+
+  description: {
+    flex: '0 0 auto',
+    marginLeft: '4rem',
+    marginTop: '-2rem',
   },
-  
-  floatingElement4: {
-    position: 'absolute',
-    top: '30%',
-    left: '5%',
+
+  descriptionText: {
+    fontSize: '1rem',
+    lineHeight: '1.6',
+    color: '#cccccc',
+    fontWeight: '300',
+    letterSpacing: '0.3px',
+    margin: 0,
+  },
+
+  // Scroll Indicator
+  scrollIndicator: {
+    position: 'fixed',
+    bottom: '3rem',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    zIndex: 100,
+  },
+
+  scrollCircle: {
     width: '60px',
     height: '60px',
-    background: 'radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%)',
-    borderRadius: '50%',
-    filter: 'blur(2px)',
-    zIndex: 0,
-    animation: 'float1 5s ease-in-out infinite reverse',
-  },
-  
-  floatingElement5: {
-    position: 'absolute',
-    bottom: '10%',
-    right: '30%',
-    width: '100px',
-    height: '100px',
-    background: 'radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 80%)',
-    borderRadius: '50%',
-    filter: 'blur(6px)',
-    zIndex: 0,
-    animation: 'float2 9s ease-in-out infinite',
-  },
-
-  // Glass texture overlay
-  glassTexture: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    background: `
-      radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
-      radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.015) 0%, transparent 50%),
-      radial-gradient(circle at 40% 90%, rgba(255, 255, 255, 0.01) 0%, transparent 50%)
-    `,
-    zIndex: 0,
-  },
-
-  // Enhanced glassmorphic card (smaller)
-  glassCard: {
-    background: `
-      linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.06) 100%),
-      linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)
-    `,
-    backdropFilter: 'blur(25px) saturate(180%)',
-    WebkitBackdropFilter: 'blur(25px) saturate(180%)',
-    border: '1px solid rgba(255, 255, 255, 0.18)',
-    borderTop: '1px solid rgba(255, 255, 255, 0.25)',
-    borderLeft: '1px solid rgba(255, 255, 255, 0.25)',
-    borderRadius: '20px',
-    padding: '2rem 1.8rem',
-    maxWidth: '420px',
-    width: '100%',
-    position: 'relative',
-    zIndex: 2,
-    boxShadow: `
-      0 25px 50px rgba(0, 0, 0, 0.4),
-      0 0 0 1px rgba(255, 255, 255, 0.05),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1)
-    `,
-    overflow: 'hidden',
-  },
-
-  // Glass reflection effect
-  glassReflection: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: '50%',
-    background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%)',
-    borderRadius: '20px 20px 0 0',
-    zIndex: -1,
-  },
-
-  hero: {
-    textAlign: 'center',
-    position: 'relative',
-    zIndex: 1,
-  },
-  
-  intro: {
-    fontSize: '0.95rem',
-    marginBottom: '1.2rem',
-    color: 'rgba(255, 255, 255, 0.85)',
-    fontWeight: '400',
-    letterSpacing: '0.3px',
-  },
-  
-  title: {
-    fontSize: '2.8rem',
-    fontWeight: '700',
-    lineHeight: '1.1',
-    color: '#fff',
-    marginBottom: '0.8rem',
-    background: 'linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.7) 100%)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    backgroundClip: 'text',
-    textShadow: '0 0 30px rgba(255, 255, 255, 0.3)',
-  },
-  
-  outline: {
-    color: 'transparent',
-    WebkitTextStroke: '1.8px rgba(255, 255, 255, 0.7)',
-    background: 'none',
-    WebkitBackgroundClip: 'initial',
-    WebkitTextFillColor: 'transparent',
-    filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.2))',
-  },
-  
-  location: {
-    fontSize: '0.95rem',
-    marginTop: '0.8rem',
-    color: 'rgba(255, 255, 255, 0.75)',
-    marginBottom: '2rem',
-    letterSpacing: '0.3px',
-  },
-  
-  buttons: {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '1rem',
-    marginTop: '1.8rem',
-    flexWrap: 'wrap',
-  },
-  
-  filledBtn: {
-    background: `
-      linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%),
-      linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%)
-    `,
-    color: '#000',
-    border: 'none',
-    padding: '0.8rem 1.6rem',
-    borderRadius: '50px',
-    cursor: 'pointer',
-    fontWeight: '600',
-    fontSize: '0.85rem',
-    backdropFilter: 'blur(15px)',
-    WebkitBackdropFilter: 'blur(15px)',
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-    boxShadow: `
-      0 8px 25px rgba(255, 255, 255, 0.15),
-      0 4px 10px rgba(0, 0, 0, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2)
-    `,
-    position: 'relative',
-    overflow: 'hidden',
-  },
-  
-  outlinedBtn: {
-    background: `
-      rgba(255, 255, 255, 0.08),
-      linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%)
-    `,
-    color: '#fff',
     border: '1px solid rgba(255, 255, 255, 0.3)',
-    padding: '0.8rem 1.6rem',
-    borderRadius: '50px',
-    cursor: 'pointer',
-    fontWeight: '600',
-    fontSize: '0.85rem',
-    backdropFilter: 'blur(15px)',
-    WebkitBackdropFilter: 'blur(15px)',
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-    boxShadow: `
-      0 8px 25px rgba(0, 0, 0, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1)
-    `,
-    position: 'relative',
-    overflow: 'hidden',
-  },
-  
-  // Enhanced info badge
-  infoBadge: {
-    position: 'absolute',
-    bottom: '1.2rem',
-    left: '1.2rem',
+    borderRadius: '50%',
     display: 'flex',
     alignItems: 'center',
-    gap: '0.6rem',
-    background: `
-      rgba(255, 255, 255, 0.08),
-      linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%)
-    `,
-    backdropFilter: 'blur(15px)',
-    WebkitBackdropFilter: 'blur(15px)',
-    border: '1px solid rgba(255, 255, 255, 0.15)',
-    borderTop: '1px solid rgba(255, 255, 255, 0.2)',
-    borderRadius: '10px',
-    padding: '0.6rem 0.8rem',
-    boxShadow: `
-      0 8px 25px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1)
-    `,
+    justifyContent: 'center',
+    marginBottom: '1rem',
+    position: 'relative',
   },
-  
-  badgeIcon: {
-    fontSize: '1rem',
-    filter: 'drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))',
+
+  scrollArrow: {
+    fontSize: '1.2rem',
+    color: '#ffffff',
   },
-  
-  badgeTitle: {
+
+  scrollText: {
     fontSize: '0.7rem',
-    color: 'rgba(255, 255, 255, 0.9)',
-    fontWeight: '500',
-    lineHeight: '1.2',
-    letterSpacing: '0.2px',
+    letterSpacing: '2px',
+    color: '#888888',
+    fontWeight: '400',
+    textAlign: 'center',
+    transform: 'rotate(0deg)',
+    writingMode: 'horizontal-tb',
   },
-  
-  badgeSubtitle: {
-    fontSize: '0.65rem',
-    color: 'rgba(255, 255, 255, 0.65)',
-    lineHeight: '1.2',
-    letterSpacing: '0.2px',
+
+  // Responsive Design
+  '@media (max-width: 768px)': {
+    navbar: {
+      padding: '1.5rem 2rem',
+      flexDirection: 'column',
+      gap: '1rem',
+    },
+    
+    mainContent: {
+      flexDirection: 'column',
+      textAlign: 'center',
+      padding: '0 2rem',
+      paddingTop: '8rem',
+    },
+    
+    description: {
+      marginLeft: 0,
+      marginTop: '3rem',
+    },
+    
+    creativeBadge: {
+      bottom: '2rem',
+      left: '2rem',
+    },
+    
+    arrowIcon: {
+      right: '2rem',
+    },
   },
 };
