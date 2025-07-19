@@ -92,7 +92,10 @@ export default Landing;
 // ---------- Styles ----------
 const styles = {
   container: {
-    background: 'radial-gradient(ellipse at top, #1a1a1a 0%, #0d0d0d 50%, #000000 100%)',
+    background: `
+      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><defs><radialGradient id="bubble1" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" /><stop offset="70%" style="stop-color:rgba(255,255,255,0.05);stop-opacity:1" /><stop offset="100%" style="stop-color:transparent;stop-opacity:0" /></radialGradient><radialGradient id="bubble2" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.08);stop-opacity:1" /><stop offset="60%" style="stop-color:rgba(255,255,255,0.03);stop-opacity:1" /><stop offset="100%" style="stop-color:transparent;stop-opacity:0" /></radialGradient><filter id="blur1"><feGaussianBlur stdDeviation="3"/></filter><filter id="blur2"><feGaussianBlur stdDeviation="2"/></filter></defs><rect width="100%" height="100%" fill="%23000000"/><circle cx="300" cy="200" r="120" fill="url(%23bubble1)" filter="url(%23blur1)" opacity="0.6"/><circle cx="1600" cy="300" r="180" fill="url(%23bubble1)" filter="url(%23blur1)" opacity="0.4"/><circle cx="200" cy="700" r="90" fill="url(%23bubble2)" filter="url(%23blur2)" opacity="0.5"/><circle cx="1500" cy="800" r="150" fill="url(%23bubble2)" filter="url(%23blur1)" opacity="0.3"/><circle cx="800" cy="100" r="60" fill="url(%23bubble2)" filter="url(%23blur2)" opacity="0.4"/><circle cx="1200" cy="600" r="100" fill="url(%23bubble1)" filter="url(%23blur1)" opacity="0.3"/><circle cx="600" cy="900" r="80" fill="url(%23bubble2)" filter="url(%23blur2)" opacity="0.4"/></svg>') center/cover no-repeat,
+      radial-gradient(ellipse at top, #1a1a1a 0%, #0d0d0d 50%, #000000 100%)
+    `,
     color: '#fff',
     minHeight: '100vh',
     padding: '2rem',
