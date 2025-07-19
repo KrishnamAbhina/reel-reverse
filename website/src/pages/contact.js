@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 function Contact() {
   const [loaded, setLoaded] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
+    fullName: '',
     email: '',
-    thoughts: ''
+    phone: '',
+    message: ''
   });
 
   useEffect(() => {
@@ -28,123 +29,122 @@ function Contact() {
 
   return (
     <div style={styles.container}>
-      {/* Header */}
-      <header style={styles.header}>
-        <div style={styles.headerContent}>
-          <div style={styles.logo}>WWprod.</div>
-          <nav style={styles.nav}>
-            <a href="#" style={styles.navLink}>About us</a>
-            <a href="#" style={styles.navLink}>Contacts</a>
-            <a href="#" style={styles.navLink}>Our products</a>
-          </nav>
-          <div style={styles.hamburger}>
-            <div style={styles.hamburgerLine}></div>
-            <div style={styles.hamburgerLine}></div>
-            <div style={styles.hamburgerLine}></div>
+      <div style={styles.content}>
+        {/* Left Side - Large Typography */}
+        <div 
+          style={{
+            ...styles.leftSide,
+            opacity: loaded ? 1 : 0,
+            transform: loaded ? 'translateX(0)' : 'translateX(-50px)',
+          }}
+        >
+          <div style={styles.decorativeElement}>
+            <div style={styles.circle}></div>
+            <div style={styles.line}></div>
           </div>
+          
+          <h1 style={styles.mainTitle}>
+            LET'S<br />
+            GET IN<br />
+            TOUCH
+          </h1>
         </div>
-      </header>
 
-      {/* Rainbow Arc Top */}
-      <div className="rainbow-arc-top"></div>
-
-      {/* Main Content */}
-      <main style={styles.main}>
-        <div style={styles.contentWrapper}>
-          {/* Left Column - Form */}
-          <div 
-            style={{
-              ...styles.leftColumn,
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? 'translateX(0)' : 'translateX(-30px)',
-            }}
-          >
-            <form onSubmit={handleSubmit} style={styles.form}>
+        {/* Right Side - Contact Form */}
+        <div 
+          style={{
+            ...styles.rightSide,
+            opacity: loaded ? 1 : 0,
+            transform: loaded ? 'translateX(0)' : 'translateX(50px)',
+          }}
+        >
+          <form onSubmit={handleSubmit} style={styles.form}>
+            <div style={styles.formRow}>
               <div style={styles.inputGroup}>
+                <label style={styles.label}>FULL NAME</label>
                 <input
                   type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
+                  name="fullName"
+                  value={formData.fullName}
                   onChange={handleInputChange}
                   style={styles.input}
-                  className="futuristic-input"
+                  className="minimal-input"
                 />
               </div>
-              
+            </div>
+
+            <div style={styles.formRow}>
               <div style={styles.inputGroup}>
+                <label style={styles.label}>EMAIL</label>
                 <input
                   type="email"
                   name="email"
-                  placeholder="Your Email"
                   value={formData.email}
                   onChange={handleInputChange}
                   style={styles.input}
-                  className="futuristic-input"
+                  className="minimal-input"
                 />
               </div>
-              
               <div style={styles.inputGroup}>
+                <label style={styles.label}>PHONE</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  style={styles.input}
+                  className="minimal-input"
+                />
+              </div>
+            </div>
+
+            <div style={styles.formRow}>
+              <div style={styles.inputGroup}>
+                <label style={styles.label}>MESSAGE</label>
                 <textarea
-                  name="thoughts"
-                  placeholder="Share your thoughts"
-                  value={formData.thoughts}
+                  name="message"
+                  value={formData.message}
                   onChange={handleInputChange}
                   style={{...styles.input, ...styles.textarea}}
-                  className="futuristic-input"
+                  className="minimal-input"
                   rows="4"
                 />
               </div>
-              
+            </div>
+
+            <div style={styles.submitSection}>
               <button 
                 type="submit" 
                 style={styles.submitButton}
-                className="neon-button"
+                className="arrow-button"
               >
-                SHARE YOUR FEEDBACK
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
               </button>
-            </form>
-          </div>
-
-          {/* Right Column - Contact Info */}
-          <div 
-            style={{
-              ...styles.rightColumn,
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? 'translateX(0)' : 'translateX(30px)',
-            }}
-          >
-            <div style={styles.contactInfo}>
-              <h1 style={styles.contactTitle} className="glitch-text">
-                Contact
-                <span style={styles.contactUs}>Us</span>
-              </h1>
-              
-              <p style={styles.contactDescription}>
-                It is very important for us to keep in touch with you, so we are always ready to answer any question that interests you. Shoot!
-              </p>
             </div>
-          </div>
+          </form>
         </div>
-      </main>
+      </div>
 
-      {/* Rainbow Arc Bottom */}
-      <div className="rainbow-arc-bottom"></div>
-
-      {/* Footer */}
+      {/* Footer Information */}
       <footer style={styles.footer}>
         <div style={styles.footerContent}>
           <div style={styles.footerSection}>
-            <span style={styles.footerLabel}>CALL US</span>
-            <span style={styles.footerValue}>+909-909-9009</span>
+            <h4 style={styles.footerTitle}>LEDVOLD</h4>
+            <p style={styles.footerText}>
+              300 E MAPLE WALK<br />
+              LEDUXGATE PIE 026<br />
+              780 199 8944
+            </p>
           </div>
           <div style={styles.footerSection}>
-            <span style={styles.footerLabel}>HERE'S OUR ADDRESS</span>
-            <span style={styles.footerValue}>Jameson Sparkle St. 25/A, Los Angeles, US</span>
-          </div>
-          <div style={styles.footerSection}>
-            <span style={styles.footerLabel}>SEND US EMAIL</span>
-            <span style={styles.footerValue}>we.love.you@mail.com</span>
+            <h4 style={styles.footerTitle}>SPRUCE GROVE</h4>
+            <p style={styles.footerText}>
+              203 CHURCHILL ROAD<br />
+              SPRUCE GROVE AB T7X 3X4<br />
+              780 962 3411
+            </p>
           </div>
         </div>
       </footer>
@@ -154,294 +154,220 @@ function Contact() {
 
 const styles = {
   container: {
-    backgroundColor: '#0a0a0a',
+    backgroundColor: '#000000',
     minHeight: '100vh',
     color: 'white',
-    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-    position: 'relative',
-    overflow: 'hidden',
-  },
-  header: {
-    padding: '1rem 0',
-    borderBottom: '1px solid #333',
-    position: 'relative',
-    zIndex: 10,
-  },
-  headerContent: {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '0 2rem',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  logo: {
-    fontSize: '1.5rem',
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  nav: {
-    display: 'flex',
-    gap: '2rem',
-  },
-  navLink: {
-    color: '#ccc',
-    textDecoration: 'none',
-    fontSize: '0.9rem',
-    transition: 'color 0.3s ease',
-  },
-  hamburger: {
+    fontFamily: "'Helvetica Neue', Arial, sans-serif",
     display: 'flex',
     flexDirection: 'column',
-    gap: '4px',
-    cursor: 'pointer',
   },
-  hamburgerLine: {
-    width: '24px',
-    height: '2px',
-    backgroundColor: 'white',
-    transition: 'all 0.3s ease',
-  },
-  main: {
+  content: {
     flex: 1,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '4rem 0',
-    position: 'relative',
-    zIndex: 5,
-  },
-  contentWrapper: {
-    maxWidth: '1200px',
-    width: '100%',
-    padding: '0 2rem',
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
+    maxWidth: '1400px',
+    width: '100%',
+    margin: '0 auto',
+    padding: '4rem 2rem',
     gap: '4rem',
     alignItems: 'center',
   },
-  leftColumn: {
+  leftSide: {
+    position: 'relative',
     transition: 'opacity 1s ease, transform 1s ease',
   },
-  rightColumn: {
+  rightSide: {
     transition: 'opacity 1s ease, transform 1s ease',
     transitionDelay: '0.2s',
+  },
+  decorativeElement: {
+    position: 'absolute',
+    top: '-2rem',
+    right: '2rem',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '1rem',
+  },
+  circle: {
+    width: '60px',
+    height: '60px',
+    borderRadius: '50%',
+    backgroundColor: 'white',
+  },
+  line: {
+    width: '120px',
+    height: '2px',
+    backgroundColor: 'white',
+    transform: 'rotate(45deg)',
+  },
+  mainTitle: {
+    fontSize: 'clamp(3rem, 8vw, 6rem)',
+    fontWeight: '300',
+    lineHeight: '0.9',
+    letterSpacing: '-0.02em',
+    margin: 0,
+    textTransform: 'uppercase',
   },
   form: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '1.5rem',
-  },
-  inputGroup: {
-    position: 'relative',
-  },
-  input: {
-    width: '100%',
-    padding: '1rem 0',
-    backgroundColor: 'transparent',
-    border: 'none',
-    borderBottom: '1px solid #333',
-    color: 'white',
-    fontSize: '1rem',
-    outline: 'none',
-    transition: 'border-color 0.3s ease',
-  },
-  textarea: {
-    resize: 'vertical',
-    minHeight: '100px',
-    paddingTop: '1rem',
-  },
-  submitButton: {
-    padding: '1rem 2rem',
-    backgroundColor: 'transparent',
-    border: '2px solid transparent',
-    color: 'white',
-    fontSize: '0.9rem',
-    fontWeight: 'bold',
-    letterSpacing: '1px',
-    cursor: 'pointer',
-    borderRadius: '4px',
-    marginTop: '1rem',
-    transition: 'all 0.3s ease',
-    position: 'relative',
-    overflow: 'hidden',
-  },
-  contactInfo: {
-    textAlign: 'left',
-  },
-  contactTitle: {
-    fontSize: 'clamp(2.5rem, 8vw, 4rem)',
-    fontWeight: 'bold',
-    marginBottom: '2rem',
-    lineHeight: 1.2,
-  },
-  contactUs: {
-    color: '#4a9eff',
-    display: 'block',
-  },
-  contactDescription: {
-    fontSize: '1.1rem',
-    lineHeight: 1.6,
-    color: '#ccc',
-    maxWidth: '400px',
-  },
-  footer: {
-    borderTop: '1px solid #333',
-    padding: '2rem 0',
-    marginTop: 'auto',
-    position: 'relative',
-    zIndex: 10,
-  },
-  footerContent: {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '0 2rem',
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
     gap: '2rem',
   },
-  footerSection: {
+  formRow: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '2rem',
+  },
+  inputGroup: {
     display: 'flex',
     flexDirection: 'column',
     gap: '0.5rem',
   },
-  footerLabel: {
-    fontSize: '0.7rem',
-    color: '#666',
+  label: {
+    fontSize: '0.75rem',
+    fontWeight: '400',
+    letterSpacing: '0.1em',
     textTransform: 'uppercase',
-    letterSpacing: '1px',
+    color: '#cccccc',
   },
-  footerValue: {
-    fontSize: '0.9rem',
+  input: {
+    backgroundColor: 'transparent',
+    border: 'none',
+    borderBottom: '1px solid #333333',
     color: 'white',
+    fontSize: '1rem',
+    padding: '0.75rem 0',
+    outline: 'none',
+    transition: 'border-color 0.3s ease',
+    fontFamily: 'inherit',
+  },
+  textarea: {
+    resize: 'vertical',
+    minHeight: '100px',
+    fontFamily: 'inherit',
+  },
+  submitSection: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    marginTop: '2rem',
+  },
+  submitButton: {
+    backgroundColor: 'transparent',
+    border: '2px solid white',
+    borderRadius: '50%',
+    width: '60px',
+    height: '60px',
+    color: 'white',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: 'all 0.3s ease',
+  },
+  footer: {
+    borderTop: '1px solid #333333',
+    padding: '2rem 0',
+    marginTop: 'auto',
+  },
+  footerContent: {
+    maxWidth: '1400px',
+    margin: '0 auto',
+    padding: '0 2rem',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '4rem',
+  },
+  footerSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1rem',
+  },
+  footerTitle: {
+    fontSize: '0.875rem',
+    fontWeight: '600',
+    letterSpacing: '0.1em',
+    textTransform: 'uppercase',
+    margin: 0,
+  },
+  footerText: {
+    fontSize: '0.875rem',
+    lineHeight: '1.6',
+    color: '#cccccc',
+    margin: 0,
   },
 };
 
-// Inject advanced CSS styles
+// Inject minimal CSS styles
 const injectStyles = () => {
   if (typeof document === 'undefined') return;
   
   const styleSheet = document.createElement('style');
   styleSheet.textContent = `
-    /* Rainbow Arc Styles */
-    .rainbow-arc-top, .rainbow-arc-bottom {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60%;
-      height: 100px;
-      background: linear-gradient(90deg, 
-        #ff6b6b 0%, 
-        #feca57 25%, 
-        #48dbfb 50%, 
-        #ff9ff3 75%, 
-        #54a0ff 100%);
-      border-radius: 50%;
-      opacity: 0.7;
-      filter: blur(1px);
+    /* Input Focus States */
+    .minimal-input:focus {
+      border-bottom-color: white !important;
+      outline: none;
     }
     
-    .rainbow-arc-top {
-      top: -50px;
-      clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
-    }
-    
-    .rainbow-arc-bottom {
-      bottom: -50px;
-      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    .minimal-input::placeholder {
+      color: #666666;
     }
 
-    /* Futuristic Input Styles */
-    .futuristic-input::placeholder {
-      color: #666;
-    }
-    
-    .futuristic-input:focus {
-      border-bottom-color: #4a9eff !important;
-      box-shadow: 0 1px 0 0 #4a9eff;
+    /* Button Hover Effect */
+    .arrow-button:hover {
+      background-color: white !important;
+      color: black !important;
+      transform: scale(1.05);
     }
 
-    /* Neon Button Effect */
-    .neon-button {
-      background: linear-gradient(135deg, 
-        rgba(255, 107, 107, 0.2) 0%, 
-        rgba(74, 158, 255, 0.2) 100%) !important;
-      border: 2px solid transparent !important;
-      background-clip: padding-box !important;
-      box-shadow: 
-        0 0 0 2px transparent,
-        inset 0 0 0 1px rgba(255, 255, 255, 0.1),
-        0 0 20px rgba(74, 158, 255, 0.3) !important;
-    }
-    
-    .neon-button:hover {
-      box-shadow: 
-        0 0 0 2px rgba(255, 107, 107, 0.5),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.2),
-        0 0 30px rgba(74, 158, 255, 0.5),
-        0 0 40px rgba(255, 107, 107, 0.3) !important;
-      transform: translateY(-2px) !important;
-    }
-
-    /* Glitch Text Effect */
-    .glitch-text {
-      position: relative;
-      color: white;
-    }
-    
-    .glitch-text::before,
-    .glitch-text::after {
-      content: attr(data-text);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    
-    .glitch-text::before {
-      color: #ff6b6b;
-      transform: translate(-2px, -2px);
-      opacity: 0.8;
-      z-index: -1;
-    }
-    
-    .glitch-text::after {
-      color: #4a9eff;
-      transform: translate(2px, 2px);
-      opacity: 0.8;
-      z-index: -2;
-    }
-
-    /* Hover Effects */
-    nav a:hover {
-      color: #4a9eff !important;
-    }
-    
-    .hamburger:hover .hamburger-line {
-      background-color: #4a9eff !important;
+    /* Single column layout for specific inputs */
+    .form-row:nth-child(1),
+    .form-row:nth-child(3) {
+      grid-template-columns: 1fr !important;
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
-      .contentWrapper {
+      .content {
         grid-template-columns: 1fr !important;
-        gap: 2rem !important;
+        gap: 3rem !important;
+        padding: 2rem 1rem !important;
+      }
+      
+      .decorativeElement {
+        top: -1rem !important;
+        right: 1rem !important;
+      }
+      
+      .circle {
+        width: 40px !important;
+        height: 40px !important;
+      }
+      
+      .line {
+        width: 80px !important;
+      }
+      
+      .formRow {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
       }
       
       .footerContent {
         grid-template-columns: 1fr !important;
-        text-align: center;
+        gap: 2rem !important;
       }
-      
-      .nav {
-        display: none;
+    }
+
+    @media (max-width: 480px) {
+      .mainTitle {
+        font-size: 2.5rem !important;
       }
     }
   `;
   
-  if (!document.head.querySelector('style[data-contact-futuristic]')) {
-    styleSheet.setAttribute('data-contact-futuristic', 'true');
+  if (!document.head.querySelector('style[data-contact-minimal]')) {
+    styleSheet.setAttribute('data-contact-minimal', 'true');
     document.head.appendChild(styleSheet);
   }
 };
