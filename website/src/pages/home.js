@@ -75,6 +75,16 @@ function Home() {
           >
             Get Started {hovered && <span style={styles.icon}> :) </span>}
           </button>
+          
+          {/* Contact Link */}
+          <div style={styles.contactLink}>
+            <button
+              style={styles.contactBtn}
+              onClick={() => navigate('/contact')}
+            >
+              Contact Us
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -163,6 +173,19 @@ const styles = {
     display: 'inline-block',
     marginLeft: '4px',
     transition: 'opacity 0.3s ease',
+  },
+  contactLink: {
+    marginTop: '1rem',
+  },
+  contactBtn: {
+    padding: '0.5rem 1.5rem',
+    borderRadius: '20px',
+    backgroundColor: 'transparent',
+    color: '#ccc',
+    border: '1px solid #333',
+    fontSize: '12px',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
   },
 };
 
