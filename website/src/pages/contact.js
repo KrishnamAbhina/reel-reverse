@@ -107,7 +107,7 @@ function Contact() {
                   onChange={handleInputChange}
                   style={{...styles.input, ...styles.textarea}}
                   className="minimal-input"
-                  rows="4"
+                  rows="3"
                 />
               </div>
             </div>
@@ -118,7 +118,7 @@ function Contact() {
                 style={styles.submitButton}
                 className="arrow-button"
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </button>
@@ -164,17 +164,19 @@ const styles = {
   content: {
     flex: 1,
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    maxWidth: '1400px',
+    gridTemplateColumns: '45% 55%',
+    maxWidth: '1200px',
     width: '100%',
     margin: '0 auto',
-    padding: '4rem 2rem',
-    gap: '4rem',
+    padding: '2rem 1.5rem',
+    gap: '3rem',
     alignItems: 'center',
+    minHeight: '80vh',
   },
   leftSide: {
     position: 'relative',
     transition: 'opacity 1s ease, transform 1s ease',
+    paddingRight: '2rem',
   },
   rightSide: {
     transition: 'opacity 1s ease, transform 1s ease',
@@ -182,26 +184,26 @@ const styles = {
   },
   decorativeElement: {
     position: 'absolute',
-    top: '-2rem',
-    right: '2rem',
+    top: '-1.5rem',
+    right: '1rem',
     display: 'flex',
     alignItems: 'center',
-    gap: '1rem',
+    gap: '0.8rem',
   },
   circle: {
-    width: '60px',
-    height: '60px',
+    width: '40px',
+    height: '40px',
     borderRadius: '50%',
     backgroundColor: 'white',
   },
   line: {
-    width: '120px',
+    width: '80px',
     height: '2px',
     backgroundColor: 'white',
     transform: 'rotate(45deg)',
   },
   mainTitle: {
-    fontSize: 'clamp(3rem, 8vw, 6rem)',
+    fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
     fontWeight: '300',
     lineHeight: '0.9',
     letterSpacing: '-0.02em',
@@ -211,20 +213,20 @@ const styles = {
   form: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '2rem',
+    gap: '1.5rem',
   },
   formRow: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    gap: '2rem',
+    gap: '1.5rem',
   },
   inputGroup: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '0.5rem',
+    gap: '0.4rem',
   },
   label: {
-    fontSize: '0.75rem',
+    fontSize: '0.7rem',
     fontWeight: '400',
     letterSpacing: '0.1em',
     textTransform: 'uppercase',
@@ -235,28 +237,28 @@ const styles = {
     border: 'none',
     borderBottom: '1px solid #333333',
     color: 'white',
-    fontSize: '1rem',
-    padding: '0.75rem 0',
+    fontSize: '0.95rem',
+    padding: '0.6rem 0',
     outline: 'none',
     transition: 'border-color 0.3s ease',
     fontFamily: 'inherit',
   },
   textarea: {
     resize: 'vertical',
-    minHeight: '100px',
+    minHeight: '80px',
     fontFamily: 'inherit',
   },
   submitSection: {
     display: 'flex',
     justifyContent: 'flex-end',
-    marginTop: '2rem',
+    marginTop: '1rem',
   },
   submitButton: {
     backgroundColor: 'transparent',
     border: '2px solid white',
     borderRadius: '50%',
-    width: '60px',
-    height: '60px',
+    width: '50px',
+    height: '50px',
     color: 'white',
     cursor: 'pointer',
     display: 'flex',
@@ -266,31 +268,31 @@ const styles = {
   },
   footer: {
     borderTop: '1px solid #333333',
-    padding: '2rem 0',
+    padding: '1.5rem 0',
     marginTop: 'auto',
   },
   footerContent: {
-    maxWidth: '1400px',
+    maxWidth: '1200px',
     margin: '0 auto',
-    padding: '0 2rem',
+    padding: '0 1.5rem',
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    gap: '4rem',
+    gap: '3rem',
   },
   footerSection: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '1rem',
+    gap: '0.8rem',
   },
   footerTitle: {
-    fontSize: '0.875rem',
+    fontSize: '0.8rem',
     fontWeight: '600',
     letterSpacing: '0.1em',
     textTransform: 'uppercase',
     margin: 0,
   },
   footerText: {
-    fontSize: '0.875rem',
+    fontSize: '0.8rem',
     lineHeight: '1.6',
     color: '#cccccc',
     margin: 0,
@@ -327,30 +329,48 @@ const injectStyles = () => {
     }
 
     /* Responsive Design */
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       .content {
         grid-template-columns: 1fr !important;
-        gap: 3rem !important;
-        padding: 2rem 1rem !important;
+        gap: 2rem !important;
+        padding: 1.5rem 1rem !important;
+        min-height: auto !important;
+      }
+      
+      .leftSide {
+        padding-right: 0 !important;
+        text-align: center;
       }
       
       .decorativeElement {
         top: -1rem !important;
-        right: 1rem !important;
+        right: 50% !important;
+        transform: translateX(50%);
+      }
+      
+      .mainTitle {
+        font-size: clamp(2rem, 8vw, 3rem) !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        padding: 1rem !important;
+        gap: 1.5rem !important;
       }
       
       .circle {
-        width: 40px !important;
-        height: 40px !important;
+        width: 30px !important;
+        height: 30px !important;
       }
       
       .line {
-        width: 80px !important;
+        width: 60px !important;
       }
       
       .formRow {
         grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
+        gap: 1rem !important;
       }
       
       .footerContent {
@@ -361,7 +381,12 @@ const injectStyles = () => {
 
     @media (max-width: 480px) {
       .mainTitle {
-        font-size: 2.5rem !important;
+        font-size: 2rem !important;
+      }
+      
+      .submitButton {
+        width: 45px !important;
+        height: 45px !important;
       }
     }
   `;
