@@ -118,101 +118,107 @@ const Landing = () => {
       {/* What We Do Best Section */}
       <section style={styles.servicesSection}>
         <div style={styles.servicesContainer}>
-          <div style={styles.servicesHeader}>
-            <h2 
-              style={{
-                ...styles.servicesTitle,
-                opacity: cardsVisible ? 1 : 0,
-                transform: cardsVisible ? 'translateY(0)' : 'translateY(50px)',
-                transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
-              }}
-            >
-              WHAT WE DO
-            </h2>
-          </div>
-
-          <div style={styles.servicesGrid}>
-            {/* Branding */}
-            <div 
-              style={{
-                ...styles.serviceCard,
-                opacity: cardsVisible ? 1 : 0,
-                transform: cardsVisible ? 'translateX(0)' : 'translateX(-100px)',
-                transition: 'opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s',
-              }} 
-              className="service-card"
-            >
-              <div style={styles.serviceIcon}>
-                <div style={styles.brandingIcon}></div>
-              </div>
-              <div style={styles.serviceContent}>
-                <h3 style={styles.serviceTitle}>BRANDING</h3>
-                <p style={styles.serviceDescription}>
-                  We craft compelling brand identities that leave a lasting impression.
-                </p>
-              </div>
+          <div style={styles.servicesMainLayout}>
+            {/* Left side - Title */}
+            <div style={styles.servicesHeaderSide}>
+              <h2 
+                style={{
+                  ...styles.servicesTitle,
+                  opacity: cardsVisible ? 1 : 0,
+                  transform: cardsVisible ? 'translateY(0)' : 'translateY(50px)',
+                  transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+                }}
+              >
+                WHAT WE DO
+              </h2>
             </div>
 
-            {/* Design */}
-            <div 
-              style={{
-                ...styles.serviceCard,
-                opacity: cardsVisible ? 1 : 0,
-                transform: cardsVisible ? 'translateX(0)' : 'translateX(100px)',
-                transition: 'opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s',
-              }} 
-              className="service-card"
-            >
-              <div style={styles.serviceIcon}>
-                <div style={styles.designIcon}></div>
-              </div>
-              <div style={styles.serviceContent}>
-                <h3 style={styles.serviceTitle}>DESIGN</h3>
-                <p style={styles.serviceDescription}>
-                  Innovative and aesthetic designs that bring your ideas to life.
-                </p>
-              </div>
-            </div>
+            {/* Right side - Grid */}
+            <div style={styles.servicesGridContainer}>
+              <div style={styles.servicesGrid}>
+                {/* Branding */}
+                <div 
+                  style={{
+                    ...styles.serviceCard,
+                    opacity: cardsVisible ? 1 : 0,
+                    transform: cardsVisible ? 'translateX(0)' : 'translateX(-100px)',
+                    transition: 'opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s',
+                  }} 
+                  className="service-card"
+                >
+                  <div style={styles.serviceIcon}>
+                    <div style={styles.brandingIcon}></div>
+                  </div>
+                  <div style={styles.serviceContent}>
+                    <h3 style={styles.serviceTitle}>BRANDING</h3>
+                    <p style={styles.serviceDescription}>
+                      We craft compelling brand identities that leave a lasting impression.
+                    </p>
+                  </div>
+                </div>
 
-            {/* Video */}
-            <div 
-              style={{
-                ...styles.serviceCard,
-                opacity: cardsVisible ? 1 : 0,
-                transform: cardsVisible ? 'translateX(0)' : 'translateX(-80px)',
-                transition: 'opacity 0.6s ease-out 0.5s, transform 0.6s ease-out 0.5s',
-              }} 
-              className="service-card"
-            >
-              <div style={styles.serviceIcon}>
-                <div style={styles.videoIcon}></div>
-              </div>
-              <div style={styles.serviceContent}>
-                <h3 style={styles.serviceTitle}>VIDEO</h3>
-                <p style={styles.serviceDescription}>
-                  Captivating visual storytelling that engages and resonates with your audience.
-                </p>
-              </div>
-            </div>
+                {/* Design */}
+                <div 
+                  style={{
+                    ...styles.serviceCard,
+                    opacity: cardsVisible ? 1 : 0,
+                    transform: cardsVisible ? 'translateX(0)' : 'translateX(100px)',
+                    transition: 'opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s',
+                  }} 
+                  className="service-card"
+                >
+                  <div style={styles.serviceIcon}>
+                    <div style={styles.designIcon}></div>
+                  </div>
+                  <div style={styles.serviceContent}>
+                    <h3 style={styles.serviceTitle}>DESIGN</h3>
+                    <p style={styles.serviceDescription}>
+                      Innovative and aesthetic designs that bring your ideas to life.
+                    </p>
+                  </div>
+                </div>
 
-            {/* Content */}
-            <div 
-              style={{
-                ...styles.serviceCard,
-                opacity: cardsVisible ? 1 : 0,
-                transform: cardsVisible ? 'translateX(0)' : 'translateX(80px)',
-                transition: 'opacity 0.6s ease-out 0.6s, transform 0.6s ease-out 0.6s',
-              }} 
-              className="service-card"
-            >
-              <div style={styles.serviceIcon}>
-                <div style={styles.contentIcon}></div>
-              </div>
-              <div style={styles.serviceContent}>
-                <h3 style={styles.serviceTitle}>CONTENT</h3>
-                <p style={styles.serviceDescription}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-                </p>
+                {/* Video */}
+                <div 
+                  style={{
+                    ...styles.serviceCard,
+                    opacity: cardsVisible ? 1 : 0,
+                    transform: cardsVisible ? 'translateX(0)' : 'translateX(-80px)',
+                    transition: 'opacity 0.6s ease-out 0.5s, transform 0.6s ease-out 0.5s',
+                  }} 
+                  className="service-card"
+                >
+                  <div style={styles.serviceIcon}>
+                    <div style={styles.videoIcon}></div>
+                  </div>
+                  <div style={styles.serviceContent}>
+                    <h3 style={styles.serviceTitle}>VIDEO</h3>
+                    <p style={styles.serviceDescription}>
+                      Captivating visual storytelling that engages and resonates with your audience.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div 
+                  style={{
+                    ...styles.serviceCard,
+                    opacity: cardsVisible ? 1 : 0,
+                    transform: cardsVisible ? 'translateX(0)' : 'translateX(80px)',
+                    transition: 'opacity 0.6s ease-out 0.6s, transform 0.6s ease-out 0.6s',
+                  }} 
+                  className="service-card"
+                >
+                  <div style={styles.serviceIcon}>
+                    <div style={styles.contentIcon}></div>
+                  </div>
+                  <div style={styles.serviceContent}>
+                    <h3 style={styles.serviceTitle}>CONTENT</h3>
+                    <p style={styles.serviceDescription}>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -366,17 +372,27 @@ const styles = {
     margin: '0 auto',
   },
 
-  servicesHeader: {
-    marginBottom: '4rem',
+  servicesMainLayout: {
+    display: 'flex',
+    gap: '4rem',
+  },
+
+  servicesHeaderSide: {
+    flex: '0 0 300px', // Fixed width for the title
+  },
+
+  servicesGridContainer: {
+    flex: '1', // Takes remaining space
   },
 
   servicesTitle: {
-    fontSize: 'clamp(0.8rem, 2vw, 1rem)',
-    fontWeight: '300',
+    fontSize: 'clamp(2rem, 5vw, 4rem)',
+    fontWeight: '600',
     textAlign: 'left',
     marginBottom: '1rem',
-    color: '#888888',
+    color: '#ffffff',
     letterSpacing: '2px',
+    lineHeight: '1.1',
   },
 
   servicesGrid: {
@@ -511,6 +527,20 @@ const styles = {
     
     servicesSection: {
       padding: '2rem 1.5rem',
+    },
+
+    servicesMainLayout: {
+      flexDirection: 'column',
+    },
+
+    servicesHeaderSide: {
+      flex: 'none',
+      textAlign: 'center',
+      marginBottom: '2rem',
+    },
+
+    servicesGridContainer: {
+      flex: 'none',
     },
 
     servicesGrid: {
