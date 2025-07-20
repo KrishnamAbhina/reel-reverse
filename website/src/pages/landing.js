@@ -60,9 +60,9 @@ const Landing = () => {
   }, [lastScrollY]);
 
   // Calculate animation values based on scroll
-  const cardsVisible = scrollY > 300;
-  const processVisible = scrollY > 800;
-  const footerVisible = scrollY > 1200;
+  const cardsVisible = scrollY > 200;
+  const processVisible = scrollY > 600;
+  const footerVisible = scrollY > 1000;
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -149,117 +149,113 @@ const Landing = () => {
         </div>
       </main>
 
-      {/* What We Do Best Section */}
+      {/* What We Do Section */}
       <section style={styles.servicesSection}>
         <div style={styles.servicesContainer}>
-          <div style={styles.servicesMainLayout}>
-            {/* Left side - Title */}
-            <div style={styles.servicesHeaderSide}>
-              <h2 
-                style={{
-                  ...styles.servicesTitle,
-                  opacity: cardsVisible ? 1 : 0,
-                  transform: cardsVisible ? 'translateY(0)' : 'translateY(50px)',
-                  transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
-                }}
-              >
-                what we do /
-              </h2>
+          {/* Title at top */}
+          <div style={styles.servicesHeader}>
+            <h2 
+              style={{
+                ...styles.servicesTitle,
+                opacity: cardsVisible ? 1 : 0,
+                transform: cardsVisible ? 'translateY(0)' : 'translateY(50px)',
+                transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+              }}
+            >
+              what we do /
+            </h2>
+          </div>
+
+          {/* 2x2 Grid below title */}
+          <div style={styles.servicesGrid}>
+            {/* Branding */}
+            <div 
+              style={{
+                ...styles.serviceCard,
+                opacity: cardsVisible ? 1 : 0,
+                transform: cardsVisible ? 'translateY(0)' : 'translateY(50px)',
+                transition: 'opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s',
+              }} 
+              className="service-card"
+            >
+              <div style={styles.serviceIcon}>
+                <div style={styles.brandingIcon}></div>
+              </div>
+              <div style={styles.serviceContent}>
+                <h3 style={styles.serviceTitle}>BRANDING</h3>
+                <p style={styles.serviceDescription}>
+                  We craft compelling brand identities that leave a lasting impression.
+                </p>
+              </div>
             </div>
 
-            {/* Right side - Grid */}
-            <div style={styles.servicesGridContainer}>
-              <div style={styles.servicesGrid}>
-                {/* Branding */}
-                <div 
-                  style={{
-                    ...styles.serviceCard,
-                    opacity: cardsVisible ? 1 : 0,
-                    transform: cardsVisible ? 'translateX(0)' : 'translateX(-100px)',
-                    transition: 'opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s',
-                  }} 
-                  className="service-card"
-                >
-                  <div style={styles.serviceIcon}>
-                    <div style={styles.brandingIcon}></div>
-                  </div>
-                  <div style={styles.serviceContent}>
-                    <h3 style={styles.serviceTitle}>BRANDING</h3>
-                    <p style={styles.serviceDescription}>
-                      We craft compelling brand identities that leave a lasting impression.
-                    </p>
-                  </div>
-                </div>
+            {/* Design */}
+            <div 
+              style={{
+                ...styles.serviceCard,
+                opacity: cardsVisible ? 1 : 0,
+                transform: cardsVisible ? 'translateY(0)' : 'translateY(50px)',
+                transition: 'opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s',
+              }} 
+              className="service-card"
+            >
+              <div style={styles.serviceIcon}>
+                <div style={styles.designIcon}></div>
+              </div>
+              <div style={styles.serviceContent}>
+                <h3 style={styles.serviceTitle}>DESIGN</h3>
+                <p style={styles.serviceDescription}>
+                  Innovative and aesthetic designs that bring your ideas to life.
+                </p>
+              </div>
+            </div>
 
-                {/* Design */}
-                <div 
-                  style={{
-                    ...styles.serviceCard,
-                    opacity: cardsVisible ? 1 : 0,
-                    transform: cardsVisible ? 'translateX(0)' : 'translateX(100px)',
-                    transition: 'opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s',
-                  }} 
-                  className="service-card"
-                >
-                  <div style={styles.serviceIcon}>
-                    <div style={styles.designIcon}></div>
-                  </div>
-                  <div style={styles.serviceContent}>
-                    <h3 style={styles.serviceTitle}>DESIGN</h3>
-                    <p style={styles.serviceDescription}>
-                      Innovative and aesthetic designs that bring your ideas to life.
-                    </p>
-                  </div>
-                </div>
+            {/* Video */}
+            <div 
+              style={{
+                ...styles.serviceCard,
+                opacity: cardsVisible ? 1 : 0,
+                transform: cardsVisible ? 'translateY(0)' : 'translateY(50px)',
+                transition: 'opacity 0.6s ease-out 0.5s, transform 0.6s ease-out 0.5s',
+              }} 
+              className="service-card"
+            >
+              <div style={styles.serviceIcon}>
+                <div style={styles.videoIcon}></div>
+              </div>
+              <div style={styles.serviceContent}>
+                <h3 style={styles.serviceTitle}>VIDEO</h3>
+                <p style={styles.serviceDescription}>
+                  Captivating visual storytelling that engages and resonates with your audience.
+                </p>
+              </div>
+            </div>
 
-                {/* Video */}
-                <div 
-                  style={{
-                    ...styles.serviceCard,
-                    opacity: cardsVisible ? 1 : 0,
-                    transform: cardsVisible ? 'translateX(0)' : 'translateX(-80px)',
-                    transition: 'opacity 0.6s ease-out 0.5s, transform 0.6s ease-out 0.5s',
-                  }} 
-                  className="service-card"
-                >
-                  <div style={styles.serviceIcon}>
-                    <div style={styles.videoIcon}></div>
-                  </div>
-                  <div style={styles.serviceContent}>
-                    <h3 style={styles.serviceTitle}>VIDEO</h3>
-                    <p style={styles.serviceDescription}>
-                      Captivating visual storytelling that engages and resonates with your audience.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div 
-                  style={{
-                    ...styles.serviceCard,
-                    opacity: cardsVisible ? 1 : 0,
-                    transform: cardsVisible ? 'translateX(0)' : 'translateX(80px)',
-                    transition: 'opacity 0.6s ease-out 0.6s, transform 0.6s ease-out 0.6s',
-                  }} 
-                  className="service-card"
-                >
-                  <div style={styles.serviceIcon}>
-                    <div style={styles.contentIcon}></div>
-                  </div>
-                  <div style={styles.serviceContent}>
-                    <h3 style={styles.serviceTitle}>CONTENT</h3>
-                    <p style={styles.serviceDescription}>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-                    </p>
-                  </div>
-                </div>
+            {/* Content */}
+            <div 
+              style={{
+                ...styles.serviceCard,
+                opacity: cardsVisible ? 1 : 0,
+                transform: cardsVisible ? 'translateY(0)' : 'translateY(50px)',
+                transition: 'opacity 0.6s ease-out 0.6s, transform 0.6s ease-out 0.6s',
+              }} 
+              className="service-card"
+            >
+              <div style={styles.serviceIcon}>
+                <div style={styles.contentIcon}></div>
+              </div>
+              <div style={styles.serviceContent}>
+                <h3 style={styles.serviceTitle}>CONTENT</h3>
+                <p style={styles.serviceDescription}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Proven Process for Success Section */}
+      {/* Proven Process for Success Section - Timeline */}
       <section style={styles.processSection}>
         <div style={styles.processContainer}>
           <div 
@@ -274,86 +270,90 @@ const Landing = () => {
             <p style={styles.processSubtitle}>We help you on every step of the journey</p>
           </div>
 
-          <div style={styles.processSteps}>
+          <div style={styles.timelineContainer}>
+            {/* Timeline line */}
+            <div style={styles.timelineLine}></div>
+
             {/* Step 01 */}
             <div 
               style={{
-                ...styles.processStep,
+                ...styles.timelineStep,
+                ...styles.timelineStepLeft,
                 opacity: processVisible ? 1 : 0,
-                transform: processVisible ? 'translateY(0)' : 'translateY(80px)',
+                transform: processVisible ? 'translateX(0)' : 'translateX(-50px)',
                 transition: 'opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s',
               }}
             >
-              <div style={styles.stepNumber}>01</div>
-              <div style={styles.stepDot}></div>
-              <h3 style={styles.stepTitle}>Contact me</h3>
-              <p style={styles.stepDescription}>
-                Donec accumsan sagittis magna, vel<br />
-                dapibus magna molestie ut. Nulla<br />
-                non mi tellus sagittis.
-              </p>
+              <div style={styles.timelineContent}>
+                <div style={styles.stepNumber}>01</div>
+                <h3 style={styles.stepTitle}>Contact me</h3>
+                <p style={styles.stepDescription}>
+                  Donec accumsan sagittis magna, vel dapibus magna molestie ut. Nulla non mi tellus sagittis.
+                </p>
+              </div>
+              <div style={styles.timelineDot}></div>
             </div>
 
             {/* Step 02 */}
             <div 
               style={{
-                ...styles.processStep,
+                ...styles.timelineStep,
+                ...styles.timelineStepRight,
                 opacity: processVisible ? 1 : 0,
-                transform: processVisible ? 'translateY(0)' : 'translateY(80px)',
+                transform: processVisible ? 'translateX(0)' : 'translateX(50px)',
                 transition: 'opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s',
               }}
             >
-              <div style={styles.stepNumber}>02</div>
-              <div style={styles.stepDot}></div>
-              <h3 style={styles.stepTitle}>Research</h3>
-              <p style={styles.stepDescription}>
-                Donec accumsan sagittis magna, vel<br />
-                dapibus magna molestie ut. Nulla<br />
-                non mi tellus sagittis.
-              </p>
+              <div style={styles.timelineDot}></div>
+              <div style={styles.timelineContent}>
+                <div style={styles.stepNumber}>02</div>
+                <h3 style={styles.stepTitle}>Research</h3>
+                <p style={styles.stepDescription}>
+                  Donec accumsan sagittis magna, vel dapibus magna molestie ut. Nulla non mi tellus sagittis.
+                </p>
+              </div>
             </div>
 
             {/* Step 03 */}
             <div 
               style={{
-                ...styles.processStep,
+                ...styles.timelineStep,
+                ...styles.timelineStepLeft,
                 opacity: processVisible ? 1 : 0,
-                transform: processVisible ? 'translateY(0)' : 'translateY(80px)',
+                transform: processVisible ? 'translateX(0)' : 'translateX(-50px)',
                 transition: 'opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s',
               }}
             >
-              <div style={styles.stepNumber}>03</div>
-              <div style={styles.stepDot}></div>
-              <h3 style={styles.stepTitle}>Work</h3>
-              <p style={styles.stepDescription}>
-                Donec accumsan sagittis magna, vel<br />
-                dapibus magna molestie ut. Nulla<br />
-                non mi tellus sagittis.
-              </p>
+              <div style={styles.timelineContent}>
+                <div style={styles.stepNumber}>03</div>
+                <h3 style={styles.stepTitle}>Work</h3>
+                <p style={styles.stepDescription}>
+                  Donec accumsan sagittis magna, vel dapibus magna molestie ut. Nulla non mi tellus sagittis.
+                </p>
+              </div>
+              <div style={styles.timelineDot}></div>
             </div>
 
             {/* Step 04 */}
             <div 
               style={{
-                ...styles.processStep,
+                ...styles.timelineStep,
+                ...styles.timelineStepRight,
                 opacity: processVisible ? 1 : 0,
-                transform: processVisible ? 'translateY(0)' : 'translateY(80px)',
+                transform: processVisible ? 'translateX(0)' : 'translateX(50px)',
                 transition: 'opacity 0.6s ease-out 0.5s, transform 0.6s ease-out 0.5s',
               }}
             >
-              <div style={styles.stepNumber}>04</div>
-              <div style={styles.stepDot}></div>
-              <h3 style={styles.stepTitle}>Test & results</h3>
-              <p style={styles.stepDescription}>
-                Donec accumsan sagittis magna, vel<br />
-                dapibus magna molestie ut. Nulla<br />
-                non mi tellus sagittis.
-              </p>
+              <div style={styles.timelineDot}></div>
+              <div style={styles.timelineContent}>
+                <div style={styles.stepNumber}>04</div>
+                <h3 style={styles.stepTitle}>Test & results</h3>
+                <p style={styles.stepDescription}>
+                  Donec accumsan sagittis magna, vel dapibus magna molestie ut. Nulla non mi tellus sagittis.
+                </p>
+              </div>
             </div>
           </div>
-
-          {/* Process line connecting the dots */}
-          <div style={styles.processLine}></div>
         </div>
       </section>
 
@@ -436,7 +436,7 @@ const styles = {
     minHeight: '100vh',
     fontFamily: "'Helvetica Neue', 'Arial', sans-serif",
     position: 'relative',
-    overflowX: 'hidden', // Prevent horizontal scroll
+    overflowX: 'hidden',
     width: '100%',
   },
 
@@ -457,7 +457,6 @@ const styles = {
     boxSizing: 'border-box',
   },
 
-  // Compact navbar styles (now default)
   compactNavbar: {
     padding: '1rem 3rem',
     backgroundColor: 'rgba(0, 0, 0, 0.95)',
@@ -487,7 +486,6 @@ const styles = {
     cursor: 'pointer',
   },
 
-  // Compact nav link styles
   compactNavLink: {
     fontSize: '0.85rem',
     letterSpacing: '0.3px',
@@ -501,7 +499,6 @@ const styles = {
     transition: 'all 0.3s ease',
   },
 
-  // Compact logo styles
   compactLogo: {
     fontSize: '0.95rem',
     letterSpacing: '1.5px',
@@ -555,9 +552,9 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    minHeight: '100vh',
+    height: '100vh',
     padding: '0 3rem',
-    paddingTop: '6rem',
+    paddingTop: '4rem',
     width: '100%',
     boxSizing: 'border-box',
   },
@@ -569,7 +566,7 @@ const styles = {
     letterSpacing: '-2px',
     color: '#ffffff',
     marginTop: '0.2rem',
-    marginBottom:'7rem',
+    marginBottom: '0',
     marginLeft: 0,
     marginRight: 0,
     flex: 1,
@@ -612,23 +609,13 @@ const styles = {
     width: '100%',
   },
 
-  servicesMainLayout: {
-    display: 'flex',
-    gap: '4rem',
-    width: '100%',
-  },
-
-  servicesHeaderSide: {
-    flex: '0 0 300px',
-  },
-
-  servicesGridContainer: {
-    flex: '1',
-    minWidth: 0, // Prevent flex item overflow
+  servicesHeader: {
+    textAlign: 'center',
+    marginBottom: '3rem',
   },
 
   servicesTitle: {
-   fontSize: 'clamp(2.5rem, 5vw, 3rem)',
+    fontSize: 'clamp(2.5rem, 5vw, 3rem)',
     fontWeight: '10',
     lineHeight: '0.9',
     letterSpacing: '-2px',
@@ -646,6 +633,8 @@ const styles = {
     gap: '0',
     border: '1px solid rgba(255, 255, 255, 0.1)',
     width: '100%',
+    maxWidth: '800px',
+    margin: '0 auto',
   },
 
   serviceCard: {
@@ -657,14 +646,16 @@ const styles = {
     overflow: 'hidden',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     display: 'flex',
-    alignItems: 'flex-start',
-    gap: '1.5rem',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+    gap: '1rem',
     minHeight: 'auto',
   },
 
   serviceIcon: {
-    width: '20px',
-    height: '20px',
+    width: '24px',
+    height: '24px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -673,7 +664,7 @@ const styles = {
 
   serviceContent: {
     flex: 1,
-    minWidth: 0, // Prevent text overflow
+    minWidth: 0,
   },
 
   serviceTitle: {
@@ -696,24 +687,24 @@ const styles = {
 
   // Service Icons
   brandingIcon: {
-    width: '20px',
-    height: '20px',
+    width: '24px',
+    height: '24px',
     border: '3px solid rgba(255, 255, 255, 0.3)',
     borderRadius: '50%',
     position: 'relative',
   },
 
   designIcon: {
-    width: '20px',
-    height: '20px',
+    width: '24px',
+    height: '24px',
     position: 'relative',
     border: '2px solid rgba(255, 255, 255, 0.6)',
     transform: 'rotate(45deg)',
   },
 
   videoIcon: {
-    width: '20px',
-    height: '20px',
+    width: '24px',
+    height: '24px',
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
@@ -723,8 +714,8 @@ const styles = {
   },
 
   contentIcon: {
-    width: '20px',
-    height: '20px',
+    width: '24px',
+    height: '24px',
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
@@ -733,7 +724,7 @@ const styles = {
     transform: 'rotate(45deg)',
   },
 
-  // Process Section
+  // Process Section - Timeline
   processSection: {
     padding: '6rem 3rem',
     background: 'linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%)',
@@ -744,7 +735,7 @@ const styles = {
   },
 
   processContainer: {
-    maxWidth: '1200px',
+    maxWidth: '1000px',
     margin: '0 auto',
     position: 'relative',
     width: '100%',
@@ -770,41 +761,69 @@ const styles = {
     letterSpacing: '0.5px',
   },
 
-  processSteps: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    gap: '2rem',
+  // Timeline styles
+  timelineContainer: {
     position: 'relative',
-    zIndex: 2,
     width: '100%',
   },
 
-  processStep: {
-    textAlign: 'center',
+  timelineLine: {
+    position: 'absolute',
+    left: '50%',
+    top: '0',
+    bottom: '0',
+    width: '2px',
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    transform: 'translateX(-50%)',
+    zIndex: 1,
+  },
+
+  timelineStep: {
     position: 'relative',
-    minWidth: 0, // Prevent overflow
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '4rem',
+    width: '100%',
+  },
+
+  timelineStepLeft: {
+    justifyContent: 'flex-end',
+  },
+
+  timelineStepRight: {
+    justifyContent: 'flex-start',
+  },
+
+  timelineContent: {
+    width: '45%',
+    padding: '2rem',
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    borderRadius: '8px',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
+  },
+
+  timelineDot: {
+    width: '16px',
+    height: '16px',
+    backgroundColor: '#ffffff',
+    borderRadius: '50%',
+    position: 'absolute',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    zIndex: 3,
+    border: '3px solid #000000',
   },
 
   stepNumber: {
-    fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+    fontSize: 'clamp(1.5rem, 3vw, 2rem)',
     fontWeight: '700',
     color: '#333333',
-    marginBottom: '1rem',
+    marginBottom: '0.5rem',
     lineHeight: '1',
   },
 
-  stepDot: {
-    width: '12px',
-    height: '12px',
-    backgroundColor: '#ffffff',
-    borderRadius: '50%',
-    margin: '0 auto 2rem',
-    position: 'relative',
-    zIndex: 3,
-  },
-
   stepTitle: {
-    fontSize: 'clamp(0.9rem, 2vw, 1.2rem)',
+    fontSize: 'clamp(1rem, 2vw, 1.2rem)',
     fontWeight: '500',
     color: '#ffffff',
     marginBottom: '1rem',
@@ -812,21 +831,10 @@ const styles = {
   },
 
   stepDescription: {
-    fontSize: 'clamp(0.7rem, 1.5vw, 0.9rem)',
+    fontSize: 'clamp(0.8rem, 1.5vw, 0.9rem)',
     color: '#888888',
     lineHeight: '1.5',
     fontWeight: '300',
-  },
-
-  processLine: {
-    position: 'absolute',
-    top: '50%',
-    left: '12.5%',
-    right: '12.5%',
-    height: '1px',
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    zIndex: 1,
-    transform: 'translateY(-50%)',
   },
 
   // Footer
@@ -852,7 +860,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     gap: '1rem',
-    minWidth: 0, // Prevent overflow
+    minWidth: 0,
   },
 
   footerTitle: {
@@ -933,13 +941,11 @@ const styles = {
 
   // Responsive Design
   '@media (max-width: 768px)': {
-    // Global mobile styles
     container: {
       overflowX: 'hidden',
       width: '100vw',
     },
 
-    // Navigation mobile
     compactNavbar: {
       padding: '1rem 1.5rem',
     },
@@ -949,13 +955,15 @@ const styles = {
       flexDirection: 'column',
       textAlign: 'center',
       padding: '0 1.5rem',
-      paddingTop: '8rem',
-      gap: '3rem',
+      paddingTop: '6rem',
+      height: 'auto',
+      minHeight: '80vh',
+      gap: '2rem',
     },
 
     mainTitle: {
-      fontSize: 'clamp(2rem, 12vw, 3.5rem)',
-      marginBottom: '2rem',
+      fontSize: 'clamp(2rem, 12vw, 3rem)',
+      marginBottom: '1rem',
     },
     
     description: {
@@ -973,73 +981,102 @@ const styles = {
       padding: '3rem 1.5rem',
     },
 
-    servicesMainLayout: {
-      flexDirection: 'column',
-      gap: '2rem',
-    },
-
-    servicesHeaderSide: {
-      flex: 'none',
-      textAlign: 'center',
-    },
-
-    servicesTitle: {
-      fontSize: 'clamp(1.8rem, 8vw, 2.5rem)',
-    },
-
-    servicesGridContainer: {
-      flex: 'none',
-      width: '100%',
-    },
-
     servicesGrid: {
-      gridTemplateColumns: '1fr',
+      gridTemplateColumns: 'repeat(2, 1fr)',
       gap: '0',
+      maxWidth: '100%',
     },
 
     serviceCard: {
-      borderRight: 'none',
-      padding: '2rem 1.5rem',
-      flexDirection: 'column',
-      textAlign: 'center',
-      gap: '1rem',
-      alignItems: 'center',
+      padding: '1.5rem 1rem',
+      gap: '0.8rem',
     },
 
     serviceTitle: {
-      fontSize: 'clamp(1.1rem, 4vw, 1.3rem)',
-      marginTop: '0',
+      fontSize: 'clamp(0.9rem, 4vw, 1.1rem)',
+      marginBottom: '0.5rem',
     },
 
     serviceDescription: {
-      fontSize: 'clamp(0.85rem, 3.5vw, 1rem)',
-      textAlign: 'center',
+      fontSize: 'clamp(0.75rem, 3.5vw, 0.85rem)',
     },
 
-    // Process section mobile
+    serviceIcon: {
+      width: '20px',
+      height: '20px',
+    },
+
+    brandingIcon: {
+      width: '20px',
+      height: '20px',
+    },
+
+    designIcon: {
+      width: '20px',
+      height: '20px',
+    },
+
+    videoIcon: {
+      width: '20px',
+      height: '20px',
+    },
+
+    contentIcon: {
+      width: '20px',
+      height: '20px',
+    },
+
+    // Process section mobile - 2x2 grid
     processSection: {
       padding: '3rem 1.5rem',
     },
 
-    processSteps: {
-      gridTemplateColumns: '1fr',
-      gap: '3rem',
+    timelineContainer: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(2, 1fr)',
+      gap: '1rem',
+      position: 'static',
     },
 
-    processLine: {
+    timelineLine: {
+      display: 'none',
+    },
+
+    timelineStep: {
+      position: 'static',
+      display: 'block',
+      marginBottom: '0',
+      width: '100%',
+    },
+
+    timelineStepLeft: {
+      justifyContent: 'center',
+    },
+
+    timelineStepRight: {
+      justifyContent: 'center',
+    },
+
+    timelineContent: {
+      width: '100%',
+      padding: '1.5rem',
+      textAlign: 'center',
+    },
+
+    timelineDot: {
       display: 'none',
     },
 
     stepNumber: {
-      fontSize: 'clamp(2rem, 10vw, 3rem)',
+      fontSize: 'clamp(1.2rem, 6vw, 1.5rem)',
     },
 
     stepTitle: {
-      fontSize: 'clamp(1rem, 4vw, 1.2rem)',
+      fontSize: 'clamp(0.9rem, 4vw, 1.1rem)',
     },
 
     stepDescription: {
-      fontSize: 'clamp(0.85rem, 3.5vw, 1rem)',
+      fontSize: 'clamp(0.75rem, 3.5vw, 0.85rem)',
     },
 
     // Footer mobile
@@ -1073,7 +1110,7 @@ const styles = {
     },
   },
 
-  // Extra small mobile (320px and below)
+  // Extra small mobile
   '@media (max-width: 480px)': {
     compactNavbar: {
       padding: '1rem',
@@ -1081,7 +1118,7 @@ const styles = {
 
     mainContent: {
       padding: '0 1rem',
-      paddingTop: '7rem',
+      paddingTop: '5rem',
     },
 
     servicesSection: {
@@ -1094,6 +1131,14 @@ const styles = {
 
     footer: {
       padding: '2rem 1rem 1.5rem',
+    },
+
+    timelineContainer: {
+      gap: '0.5rem',
+    },
+
+    timelineContent: {
+      padding: '1rem',
     },
   },
 };
