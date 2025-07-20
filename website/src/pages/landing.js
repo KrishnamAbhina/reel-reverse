@@ -149,9 +149,6 @@ const Landing = () => {
         </div>
       </main>
 
-      {/* Divider line below title */}
-      
-
       {/* What We Do Best Section */}
       <section style={styles.servicesSection}>
         <div style={styles.servicesContainer}>
@@ -439,6 +436,8 @@ const styles = {
     minHeight: '100vh',
     fontFamily: "'Helvetica Neue', 'Arial', sans-serif",
     position: 'relative',
+    overflowX: 'hidden', // Prevent horizontal scroll
+    width: '100%',
   },
 
   // Navigation
@@ -454,6 +453,8 @@ const styles = {
     zIndex: 100,
     backgroundColor: 'rgba(0, 0, 0, 0.9)',
     backdropFilter: 'blur(10px)',
+    width: '100%',
+    boxSizing: 'border-box',
   },
 
   // Compact navbar styles (now default)
@@ -462,17 +463,6 @@ const styles = {
     backgroundColor: 'rgba(0, 0, 0, 0.95)',
     backdropFilter: 'blur(15px)',
     boxShadow: '0 2px 20px rgba(0, 0, 0, 0.3)',
-  },
-
-  // Navbar bottom line with spacing
-  navbarLine: {
-    position: 'fixed',
-    top: '4rem',
-    left: '3rem',
-    right: '3rem',
-    height: '1px',
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    zIndex: 99,
   },
 
   navLeft: {
@@ -540,11 +530,13 @@ const styles = {
     backgroundColor: 'rgba(0, 0, 0, 0.98)',
     backdropFilter: 'blur(20px)',
     zIndex: 99,
-    padding: '2rem 3rem',
+    padding: '2rem',
     display: 'flex',
     flexDirection: 'column',
     gap: '1.5rem',
     transition: 'all 0.3s ease-out',
+    width: '100%',
+    boxSizing: 'border-box',
   },
 
   mobileNavLink: {
@@ -566,6 +558,8 @@ const styles = {
     minHeight: '100vh',
     padding: '0 3rem',
     paddingTop: '6rem',
+    width: '100%',
+    boxSizing: 'border-box',
   },
 
   mainTitle: {
@@ -603,41 +597,38 @@ const styles = {
     color: '#888888',
   },
 
-  // Divider line below title
-  titleDivider: {
-    width: '100%',
-    height: '1px',
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    marginTop: '2rem',
-    marginBottom: '4rem',
-  },
-
   // Services Section
   servicesSection: {
     padding: '4rem 3rem',
     background: 'linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%)',
+    width: '100%',
+    boxSizing: 'border-box',
+    overflowX: 'hidden',
   },
 
   servicesContainer: {
     maxWidth: '1200px',
     margin: '0 auto',
+    width: '100%',
   },
 
   servicesMainLayout: {
     display: 'flex',
     gap: '4rem',
+    width: '100%',
   },
 
   servicesHeaderSide: {
-    flex: '0 0 300px', // Fixed width for the title
+    flex: '0 0 300px',
   },
 
   servicesGridContainer: {
-    flex: '1', // Takes remaining space
+    flex: '1',
+    minWidth: 0, // Prevent flex item overflow
   },
 
   servicesTitle: {
-   fontSize: 'clamp(2.5rem, 2vw, 3rem)',
+   fontSize: 'clamp(2.5rem, 5vw, 3rem)',
     fontWeight: '10',
     lineHeight: '0.9',
     letterSpacing: '-2px',
@@ -646,7 +637,6 @@ const styles = {
     marginBottom:'0.2rem',
     marginLeft: 0,
     marginRight: 0,
-    flex: 1,
     fontFamily: "'Helvetica Neue', Arial, sans-serif",
   },
 
@@ -655,19 +645,21 @@ const styles = {
     gridTemplateColumns: 'repeat(2, 1fr)',
     gap: '0',
     border: '1px solid rgba(255, 255, 255, 0.1)',
+    width: '100%',
   },
 
   serviceCard: {
     backgroundColor: 'transparent',
     borderRight: '1px solid rgba(255, 255, 255, 0.1)',
     borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-    padding: '3rem 2rem',
+    padding: '2rem 1.5rem',
     position: 'relative',
     overflow: 'hidden',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     display: 'flex',
     alignItems: 'flex-start',
-    gap: '2rem',
+    gap: '1.5rem',
+    minHeight: 'auto',
   },
 
   serviceIcon: {
@@ -681,24 +673,25 @@ const styles = {
 
   serviceContent: {
     flex: 1,
+    minWidth: 0, // Prevent text overflow
   },
 
   serviceTitle: {
-    fontSize: 'clamp(1.2rem, 1.5vw, 0.5rem)',
+    fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
     fontWeight: '400',
-    marginBottom: '1rem',
-    marginTop:'-1.5rem',
+    marginBottom: '0.8rem',
+    marginTop: '0',
     color: '#ffffff',
     letterSpacing: '1px',
   },
 
   serviceDescription: {
-   fontSize: 'clamp(0.5rem, 1.2vw, 0.7rem)',
+    fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
     fontWeight: '300',
     letterSpacing: '0.1em',
     color: '#cccccc82',
-    lineHeight:1.2,
-    marginBottom:'-1.5rem',
+    lineHeight: 1.4,
+    marginBottom: '0',
   },
 
   // Service Icons
@@ -745,12 +738,16 @@ const styles = {
     padding: '6rem 3rem',
     background: 'linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%)',
     position: 'relative',
+    width: '100%',
+    boxSizing: 'border-box',
+    overflowX: 'hidden',
   },
 
   processContainer: {
     maxWidth: '1200px',
     margin: '0 auto',
     position: 'relative',
+    width: '100%',
   },
 
   processHeader: {
@@ -776,18 +773,20 @@ const styles = {
   processSteps: {
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
-    gap: '3rem',
+    gap: '2rem',
     position: 'relative',
     zIndex: 2,
+    width: '100%',
   },
 
   processStep: {
     textAlign: 'center',
     position: 'relative',
+    minWidth: 0, // Prevent overflow
   },
 
   stepNumber: {
-    fontSize: 'clamp(3rem, 6vw, 5rem)',
+    fontSize: 'clamp(2.5rem, 6vw, 4rem)',
     fontWeight: '700',
     color: '#333333',
     marginBottom: '1rem',
@@ -805,7 +804,7 @@ const styles = {
   },
 
   stepTitle: {
-    fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+    fontSize: 'clamp(0.9rem, 2vw, 1.2rem)',
     fontWeight: '500',
     color: '#ffffff',
     marginBottom: '1rem',
@@ -813,7 +812,7 @@ const styles = {
   },
 
   stepDescription: {
-    fontSize: 'clamp(0.8rem, 1.5vw, 0.9rem)',
+    fontSize: 'clamp(0.7rem, 1.5vw, 0.9rem)',
     color: '#888888',
     lineHeight: '1.5',
     fontWeight: '300',
@@ -835,6 +834,8 @@ const styles = {
     background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%)',
     padding: '4rem 3rem 2rem',
     borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+    width: '100%',
+    boxSizing: 'border-box',
   },
 
   footerContent: {
@@ -844,12 +845,14 @@ const styles = {
     gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
     gap: '2rem',
     marginBottom: '2rem',
+    width: '100%',
   },
 
   footerSection: {
     display: 'flex',
     flexDirection: 'column',
     gap: '1rem',
+    minWidth: 0, // Prevent overflow
   },
 
   footerTitle: {
@@ -896,6 +899,7 @@ const styles = {
     paddingTop: '2rem',
     borderTop: '1px solid rgba(255, 255, 255, 0.1)',
     textAlign: 'center',
+    width: '100%',
   },
 
   footerCopyright: {
@@ -929,43 +933,63 @@ const styles = {
 
   // Responsive Design
   '@media (max-width: 768px)': {
+    // Global mobile styles
+    container: {
+      overflowX: 'hidden',
+      width: '100vw',
+    },
+
+    // Navigation mobile
     compactNavbar: {
-      padding: '1rem 2rem',
+      padding: '1rem 1.5rem',
     },
     
-    navbarLine: {
-      left: '2rem',
-      right: '2rem',
-    },
-    
+    // Main content mobile
     mainContent: {
       flexDirection: 'column',
       textAlign: 'center',
-      padding: '0 2rem',
+      padding: '0 1.5rem',
       paddingTop: '8rem',
+      gap: '3rem',
+    },
+
+    mainTitle: {
+      fontSize: 'clamp(2rem, 12vw, 3.5rem)',
+      marginBottom: '2rem',
     },
     
     description: {
       marginLeft: 0,
-      marginTop: '3rem',
+      marginTop: 0,
+      width: '100%',
+    },
+
+    descriptionText: {
+      fontSize: 'clamp(0.9rem, 4vw, 1rem)',
     },
     
+    // Services section mobile
     servicesSection: {
-      padding: '2rem 1.5rem',
+      padding: '3rem 1.5rem',
     },
 
     servicesMainLayout: {
       flexDirection: 'column',
+      gap: '2rem',
     },
 
     servicesHeaderSide: {
       flex: 'none',
       textAlign: 'center',
-      marginBottom: '2rem',
+    },
+
+    servicesTitle: {
+      fontSize: 'clamp(1.8rem, 8vw, 2.5rem)',
     },
 
     servicesGridContainer: {
       flex: 'none',
+      width: '100%',
     },
 
     servicesGrid: {
@@ -979,10 +1003,22 @@ const styles = {
       flexDirection: 'column',
       textAlign: 'center',
       gap: '1rem',
+      alignItems: 'center',
     },
 
+    serviceTitle: {
+      fontSize: 'clamp(1.1rem, 4vw, 1.3rem)',
+      marginTop: '0',
+    },
+
+    serviceDescription: {
+      fontSize: 'clamp(0.85rem, 3.5vw, 1rem)',
+      textAlign: 'center',
+    },
+
+    // Process section mobile
     processSection: {
-      padding: '4rem 2rem',
+      padding: '3rem 1.5rem',
     },
 
     processSteps: {
@@ -994,13 +1030,70 @@ const styles = {
       display: 'none',
     },
 
+    stepNumber: {
+      fontSize: 'clamp(2rem, 10vw, 3rem)',
+    },
+
+    stepTitle: {
+      fontSize: 'clamp(1rem, 4vw, 1.2rem)',
+    },
+
+    stepDescription: {
+      fontSize: 'clamp(0.85rem, 3.5vw, 1rem)',
+    },
+
+    // Footer mobile
     footer: {
-      padding: '3rem 2rem 2rem',
+      padding: '3rem 1.5rem 2rem',
     },
 
     footerContent: {
       gridTemplateColumns: '1fr',
-      gap: '2rem',
+      gap: '2.5rem',
+    },
+
+    footerTitle: {
+      fontSize: 'clamp(1.1rem, 4vw, 1.3rem)',
+    },
+
+    footerSubtitle: {
+      fontSize: 'clamp(0.95rem, 3.5vw, 1.1rem)',
+    },
+
+    footerDescription: {
+      fontSize: 'clamp(0.85rem, 3vw, 1rem)',
+    },
+
+    footerListItem: {
+      fontSize: 'clamp(0.85rem, 3vw, 1rem)',
+    },
+
+    scrollIndicator: {
+      bottom: '2rem',
+    },
+  },
+
+  // Extra small mobile (320px and below)
+  '@media (max-width: 480px)': {
+    compactNavbar: {
+      padding: '1rem',
+    },
+
+    mainContent: {
+      padding: '0 1rem',
+      paddingTop: '7rem',
+    },
+
+    servicesSection: {
+      padding: '2rem 1rem',
+    },
+
+    processSection: {
+      padding: '2rem 1rem',
+    },
+
+    footer: {
+      padding: '2rem 1rem 1.5rem',
     },
   },
 };
