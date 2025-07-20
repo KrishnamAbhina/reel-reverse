@@ -61,7 +61,8 @@ const Landing = () => {
 
   // Calculate animation values based on scroll
   const cardsVisible = scrollY > 300;
-  const footerVisible = scrollY > 800;
+  const processVisible = scrollY > 800;
+  const footerVisible = scrollY > 1200;
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -70,23 +71,59 @@ const Landing = () => {
   return (
     <div style={styles.container}>
       {/* Navigation */}
-      <nav style={styles.navbar}>
-        <div style={styles.navLeft}>
-          <a href="#" style={styles.navLink} className="nav-link">About</a>
-          <a href="#" style={styles.navLink} className="nav-link">Services</a>
-        </div>
-        
-        <div style={styles.logo}>REEL REVERSE</div>
-        
-        <div style={styles.navRight}>
-          <a href="#" style={styles.navLink} className="nav-link">Cases</a>
-          <a href="#" style={styles.navLink} className="nav-link">Contact</a>
-        </div>
+      <nav 
+        style={{
+          ...styles.navbar,
+          ...styles.compactNavbar,
+          opacity: showNavbar ? 1 : 0,
+          transform: showNavbar ? 'translateY(0)' : 'translateY(-100%)',
+          transition: 'opacity 0.3s ease-out, transform 0.3s ease-out, padding 0.3s ease-out, backdrop-filter 0.3s ease-out',
+        }}
+      >
+        {!isMobile ? (
+          <>
+            <div style={styles.navLeft}>
+              <a href="#" style={{...styles.navLink, ...styles.compactNavLink}} className="nav-link">About</a>
+              <a href="#" style={{...styles.navLink, ...styles.compactNavLink}} className="nav-link">Services</a>
+            </div>
+            
+            <div style={{...styles.logo, ...styles.compactLogo}}>REEL REVERSE</div>
+            
+            <div style={styles.navRight}>
+              <a href="#" style={{...styles.navLink, ...styles.compactNavLink}} className="nav-link">Cases</a>
+              <a href="#" style={{...styles.navLink, ...styles.compactNavLink}} className="nav-link">Contact</a>
+            </div>
+          </>
+        ) : (
+          <>
+            <div style={{...styles.logo, ...styles.compactLogo}}>REEL REVERSE</div>
+            <div style={styles.hamburger} onClick={toggleMobileMenu}>
+              <div style={{...styles.hamburgerLine, transform: isMobileMenuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none'}}></div>
+              <div style={{...styles.hamburgerLine, opacity: isMobileMenuOpen ? 0 : 1}}></div>
+              <div style={{...styles.hamburgerLine, transform: isMobileMenuOpen ? 'rotate(-45deg) translate(7px, -6px)' : 'none'}}></div>
+            </div>
+          </>
+        )}
       </nav>
 
-      {/* Thin line below navbar */}
-      <div style={styles.navbarLine}></div>
+      {/* Mobile Menu */}
+      {isMobile && (
+        <div 
+          style={{
+            ...styles.mobileMenu,
+            opacity: isMobileMenuOpen ? 1 : 0,
+            transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
+            pointerEvents: isMobileMenuOpen ? 'auto' : 'none',
+          }}
+        >
+          <a href="#" style={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>About</a>
+          <a href="#" style={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>Services</a>
+          <a href="#" style={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>Cases</a>
+          <a href="#" style={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
+        </div>
+      )}
 
+     
       {/* Main Content */}
       <main 
         style={{
@@ -113,7 +150,7 @@ const Landing = () => {
       </main>
 
       {/* Divider line below title */}
-      <div style={styles.titleDivider}></div>
+      
 
       {/* What We Do Best Section */}
       <section style={styles.servicesSection}>
@@ -129,7 +166,7 @@ const Landing = () => {
                   transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
                 }}
               >
-                WHAT WE DO
+                what we do /
               </h2>
             </div>
 
@@ -225,12 +262,164 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* Proven Process for Success Section */}
+      <section style={styles.processSection}>
+        <div style={styles.processContainer}>
+          <div 
+            style={{
+              ...styles.processHeader,
+              opacity: processVisible ? 1 : 0,
+              transform: processVisible ? 'translateY(0)' : 'translateY(50px)',
+              transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+            }}
+          >
+            <h2 style={styles.processTitle}>Proven process for success</h2>
+            <p style={styles.processSubtitle}>We help you on every step of the journey</p>
+          </div>
+
+          <div style={styles.processSteps}>
+            {/* Step 01 */}
+            <div 
+              style={{
+                ...styles.processStep,
+                opacity: processVisible ? 1 : 0,
+                transform: processVisible ? 'translateY(0)' : 'translateY(80px)',
+                transition: 'opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s',
+              }}
+            >
+              <div style={styles.stepNumber}>01</div>
+              <div style={styles.stepDot}></div>
+              <h3 style={styles.stepTitle}>Contact me</h3>
+              <p style={styles.stepDescription}>
+                Donec accumsan sagittis magna, vel<br />
+                dapibus magna molestie ut. Nulla<br />
+                non mi tellus sagittis.
+              </p>
+            </div>
+
+            {/* Step 02 */}
+            <div 
+              style={{
+                ...styles.processStep,
+                opacity: processVisible ? 1 : 0,
+                transform: processVisible ? 'translateY(0)' : 'translateY(80px)',
+                transition: 'opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s',
+              }}
+            >
+              <div style={styles.stepNumber}>02</div>
+              <div style={styles.stepDot}></div>
+              <h3 style={styles.stepTitle}>Research</h3>
+              <p style={styles.stepDescription}>
+                Donec accumsan sagittis magna, vel<br />
+                dapibus magna molestie ut. Nulla<br />
+                non mi tellus sagittis.
+              </p>
+            </div>
+
+            {/* Step 03 */}
+            <div 
+              style={{
+                ...styles.processStep,
+                opacity: processVisible ? 1 : 0,
+                transform: processVisible ? 'translateY(0)' : 'translateY(80px)',
+                transition: 'opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s',
+              }}
+            >
+              <div style={styles.stepNumber}>03</div>
+              <div style={styles.stepDot}></div>
+              <h3 style={styles.stepTitle}>Work</h3>
+              <p style={styles.stepDescription}>
+                Donec accumsan sagittis magna, vel<br />
+                dapibus magna molestie ut. Nulla<br />
+                non mi tellus sagittis.
+              </p>
+            </div>
+
+            {/* Step 04 */}
+            <div 
+              style={{
+                ...styles.processStep,
+                opacity: processVisible ? 1 : 0,
+                transform: processVisible ? 'translateY(0)' : 'translateY(80px)',
+                transition: 'opacity 0.6s ease-out 0.5s, transform 0.6s ease-out 0.5s',
+              }}
+            >
+              <div style={styles.stepNumber}>04</div>
+              <div style={styles.stepDot}></div>
+              <h3 style={styles.stepTitle}>Test & results</h3>
+              <p style={styles.stepDescription}>
+                Donec accumsan sagittis magna, vel<br />
+                dapibus magna molestie ut. Nulla<br />
+                non mi tellus sagittis.
+              </p>
+            </div>
+          </div>
+
+          {/* Process line connecting the dots */}
+          <div style={styles.processLine}></div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer 
+        style={{
+          ...styles.footer,
+          opacity: footerVisible ? 1 : 0,
+          transform: footerVisible ? 'translateY(0)' : 'translateY(50px)',
+          transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+        }}
+      >
+        <div style={styles.footerContent}>
+          <div style={styles.footerSection}>
+            <h3 style={styles.footerTitle}>REEL REVERSE</h3>
+            <p style={styles.footerDescription}>
+              Bridging the gap between creators and talent, one project at a time.
+            </p>
+          </div>
+          
+          <div style={styles.footerSection}>
+            <h4 style={styles.footerSubtitle}>Services</h4>
+            <ul style={styles.footerList}>
+              <li style={styles.footerListItem}>Strategy</li>
+              <li style={styles.footerListItem}>Campaigns</li>
+              <li style={styles.footerListItem}>Social Media</li>
+              <li style={styles.footerListItem}>Analytics</li>
+            </ul>
+          </div>
+          
+          <div style={styles.footerSection}>
+            <h4 style={styles.footerSubtitle}>Company</h4>
+            <ul style={styles.footerList}>
+              <li style={styles.footerListItem}>About</li>
+              <li style={styles.footerListItem}>Cases</li>
+              <li style={styles.footerListItem}>Contact</li>
+              <li style={styles.footerListItem}>Careers</li>
+            </ul>
+          </div>
+          
+          <div style={styles.footerSection}>
+            <h4 style={styles.footerSubtitle}>Connect</h4>
+            <ul style={styles.footerList}>
+              <li style={styles.footerListItem}>Instagram</li>
+              <li style={styles.footerListItem}>9849772570</li>
+              <li style={styles.footerListItem}>krishnamabhina@gmail.com</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div style={styles.footerBottom}>
+          <p style={styles.footerCopyright}>
+            © 2024 Reel Reverse. All rights reserved.
+          </p>
+        </div>
+      </footer>
+
       {/* Scroll Indicator */}
       <div 
         style={{
           ...styles.scrollIndicator,
-          opacity: scrolled ? 0 : 1,
-          transform: scrolled ? 'translateX(-50%) translateY(20px)' : 'translateX(-50%) translateY(0)',
+          opacity: showScrollText ? 1 : 0,
+          transform: showScrollText ? 'translateY(0)' : 'translateY(20px)',
           transition: 'opacity 0.5s ease-out, transform 0.5s ease-out',
         }}
       >
@@ -245,12 +434,11 @@ export default Landing;
 // ---------- Styles ----------
 const styles = {
   container: {
-    backgroundColor: '#000000ff',
+    background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%)',
     color: '#ffffff',
     minHeight: '100vh',
     fontFamily: "'Helvetica Neue', 'Arial', sans-serif",
     position: 'relative',
-    overflow: 'auto',
   },
 
   // Navigation
@@ -268,15 +456,23 @@ const styles = {
     backdropFilter: 'blur(10px)',
   },
 
-  // Thin line below navbar
+  // Compact navbar styles (now default)
+  compactNavbar: {
+    padding: '1rem 3rem',
+    backgroundColor: 'rgba(0, 0, 0, 0.95)',
+    backdropFilter: 'blur(15px)',
+    boxShadow: '0 2px 20px rgba(0, 0, 0, 0.3)',
+  },
+
+  // Navbar bottom line with spacing
   navbarLine: {
     position: 'fixed',
-    bottom: '26.5rem',
-    left: 0,
-    right: 0,
-    height: '0.5px',
-    backgroundColor: 'rgba(255, 255, 255, 0.14)',
-    zIndex: 40,
+    top: '4rem',
+    left: '3rem',
+    right: '3rem',
+    height: '1px',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    zIndex: 99,
   },
 
   navLeft: {
@@ -301,11 +497,65 @@ const styles = {
     cursor: 'pointer',
   },
 
+  // Compact nav link styles
+  compactNavLink: {
+    fontSize: '0.85rem',
+    letterSpacing: '0.3px',
+  },
+
   logo: {
     fontSize: '1.1rem',
     fontWeight: '400',
     letterSpacing: '2px',
     color: '#ffffffff',
+    transition: 'all 0.3s ease',
+  },
+
+  // Compact logo styles
+  compactLogo: {
+    fontSize: '0.95rem',
+    letterSpacing: '1.5px',
+  },
+
+  // Mobile Navigation
+  hamburger: {
+    display: 'flex',
+    flexDirection: 'column',
+    cursor: 'pointer',
+    gap: '4px',
+  },
+
+  hamburgerLine: {
+    width: '25px',
+    height: '2px',
+    backgroundColor: '#ffffff',
+    transition: 'all 0.3s ease',
+  },
+
+  mobileMenu: {
+    position: 'fixed',
+    top: '4rem',
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.98)',
+    backdropFilter: 'blur(20px)',
+    zIndex: 99,
+    padding: '2rem 3rem',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1.5rem',
+    transition: 'all 0.3s ease-out',
+  },
+
+  mobileNavLink: {
+    color: '#ffffff',
+    textDecoration: 'none',
+    fontSize: '1.1rem',
+    fontWeight: '300',
+    letterSpacing: '1px',
+    padding: '0.5rem 0',
+    borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+    transition: 'color 0.3s ease',
   },
 
   // Main Content
@@ -315,20 +565,21 @@ const styles = {
     justifyContent: 'space-between',
     minHeight: '100vh',
     padding: '0 3rem',
-    paddingTop: '1.2rem',
+    paddingTop: '6rem',
   },
 
   mainTitle: {
-    fontSize: 'clamp(3rem, 8vw, 6rem)',
+    fontSize: 'clamp(2.5rem, 8vw, 6rem)',
     fontWeight: '50',
     lineHeight: '0.9',
     letterSpacing: '-2px',
     color: '#ffffff',
     marginTop: '0.2rem',
-    marginBottom:'0.2rem',
+    marginBottom:'7rem',
     marginLeft: 0,
     marginRight: 0,
     flex: 1,
+    fontFamily: "'Helvetica Neue', Arial, sans-serif",
   },
 
   agencyText: {
@@ -344,7 +595,7 @@ const styles = {
   },
 
   descriptionText: {
-    fontSize: '0.9rem',
+    fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
     lineHeight: '1.3',
     fontWeight: '300',
     letterSpacing: '2px',
@@ -386,13 +637,17 @@ const styles = {
   },
 
   servicesTitle: {
-    fontSize: 'clamp(2rem, 5vw, 4rem)',
-    fontWeight: '600',
-    textAlign: 'left',
-    marginBottom: '1rem',
+   fontSize: 'clamp(2.5rem, 2vw, 3rem)',
+    fontWeight: '10',
+    lineHeight: '0.9',
+    letterSpacing: '-2px',
     color: '#ffffff',
-    letterSpacing: '2px',
-    lineHeight: '1.1',
+    marginTop: '0.2rem',
+    marginBottom:'0.2rem',
+    marginLeft: 0,
+    marginRight: 0,
+    flex: 1,
+    fontFamily: "'Helvetica Neue', Arial, sans-serif",
   },
 
   servicesGrid: {
@@ -406,18 +661,18 @@ const styles = {
     backgroundColor: 'transparent',
     borderRight: '1px solid rgba(255, 255, 255, 0.1)',
     borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-    padding: '2rem 1.5rem',
+    padding: '3rem 2rem',
     position: 'relative',
     overflow: 'hidden',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     display: 'flex',
     alignItems: 'flex-start',
-    gap: '1.5rem',
+    gap: '2rem',
   },
 
   serviceIcon: {
-    width: '50px',
-    height: '50px',
+    width: '20px',
+    height: '20px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -429,40 +684,43 @@ const styles = {
   },
 
   serviceTitle: {
-    fontSize: 'clamp(1.1rem, 2.2vw, 1.3rem)',
-    fontWeight: '600',
-    marginBottom: '0.8rem',
+    fontSize: 'clamp(1.2rem, 1.5vw, 0.5rem)',
+    fontWeight: '400',
+    marginBottom: '1rem',
+    marginTop:'-1.5rem',
     color: '#ffffff',
     letterSpacing: '1px',
   },
 
   serviceDescription: {
-    fontSize: 'clamp(0.8rem, 1.3vw, 0.9rem)',
-    lineHeight: '1.5',
-    color: '#cccccc',
+   fontSize: 'clamp(0.5rem, 1.2vw, 0.7rem)',
     fontWeight: '300',
+    letterSpacing: '0.1em',
+    color: '#cccccc82',
+    lineHeight:1.2,
+    marginBottom:'-1.5rem',
   },
 
   // Service Icons
   brandingIcon: {
-    width: '35px',
-    height: '35px',
+    width: '20px',
+    height: '20px',
     border: '3px solid rgba(255, 255, 255, 0.3)',
     borderRadius: '50%',
     position: 'relative',
   },
 
   designIcon: {
-    width: '35px',
-    height: '35px',
+    width: '20px',
+    height: '20px',
     position: 'relative',
     border: '2px solid rgba(255, 255, 255, 0.6)',
     transform: 'rotate(45deg)',
   },
 
   videoIcon: {
-    width: '35px',
-    height: '35px',
+    width: '20px',
+    height: '20px',
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
@@ -472,14 +730,178 @@ const styles = {
   },
 
   contentIcon: {
-    width: '35px',
-    height: '35px',
+    width: '20px',
+    height: '20px',
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     background: 'rgba(255, 255, 255, 0.6)',
     transform: 'rotate(45deg)',
+  },
+
+  // Process Section
+  processSection: {
+    padding: '6rem 3rem',
+    background: 'linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%)',
+    position: 'relative',
+  },
+
+  processContainer: {
+    maxWidth: '1200px',
+    margin: '0 auto',
+    position: 'relative',
+  },
+
+  processHeader: {
+    textAlign: 'center',
+    marginBottom: '4rem',
+  },
+
+  processTitle: {
+    fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+    fontWeight: '300',
+    color: '#ffffff',
+    marginBottom: '1rem',
+    letterSpacing: '1px',
+  },
+
+  processSubtitle: {
+    fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
+    color: '#888888',
+    fontWeight: '300',
+    letterSpacing: '0.5px',
+  },
+
+  processSteps: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '3rem',
+    position: 'relative',
+    zIndex: 2,
+  },
+
+  processStep: {
+    textAlign: 'center',
+    position: 'relative',
+  },
+
+  stepNumber: {
+    fontSize: 'clamp(3rem, 6vw, 5rem)',
+    fontWeight: '700',
+    color: '#333333',
+    marginBottom: '1rem',
+    lineHeight: '1',
+  },
+
+  stepDot: {
+    width: '12px',
+    height: '12px',
+    backgroundColor: '#ffffff',
+    borderRadius: '50%',
+    margin: '0 auto 2rem',
+    position: 'relative',
+    zIndex: 3,
+  },
+
+  stepTitle: {
+    fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+    fontWeight: '500',
+    color: '#ffffff',
+    marginBottom: '1rem',
+    letterSpacing: '0.5px',
+  },
+
+  stepDescription: {
+    fontSize: 'clamp(0.8rem, 1.5vw, 0.9rem)',
+    color: '#888888',
+    lineHeight: '1.5',
+    fontWeight: '300',
+  },
+
+  processLine: {
+    position: 'absolute',
+    top: '50%',
+    left: '12.5%',
+    right: '12.5%',
+    height: '1px',
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    zIndex: 1,
+    transform: 'translateY(-50%)',
+  },
+
+  // Footer
+  footer: {
+    background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%)',
+    padding: '4rem 3rem 2rem',
+    borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+  },
+
+  footerContent: {
+    maxWidth: '1200px',
+    margin: '0 auto',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    gap: '2rem',
+    marginBottom: '2rem',
+  },
+
+  footerSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1rem',
+  },
+
+  footerTitle: {
+    fontSize: '1.2rem',
+    fontWeight: '600',
+    color: '#ffffff',
+    letterSpacing: '1px',
+    marginBottom: '0.5rem',
+  },
+
+  footerSubtitle: {
+    fontSize: '1rem',
+    fontWeight: '500',
+    color: '#ffffff',
+    marginBottom: '0.5rem',
+  },
+
+  footerDescription: {
+    fontSize: '0.9rem',
+    color: '#888888',
+    lineHeight: '1.5',
+  },
+
+  footerList: {
+    listStyle: 'none',
+    padding: 0,
+    margin: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5rem',
+  },
+
+  footerListItem: {
+    fontSize: '0.9rem',
+    color: '#cccccc',
+    cursor: 'pointer',
+    transition: 'color 0.3s ease, transform 0.3s ease',
+    padding: '0.25rem 0',
+  },
+
+  footerBottom: {
+    maxWidth: '1200px',
+    margin: '0 auto',
+    paddingTop: '2rem',
+    borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+    textAlign: 'center',
+  },
+
+  footerCopyright: {
+    fontSize: '0.8rem',
+    color: '#666666',
+    margin: 0,
   },
 
   // Scroll Indicator
@@ -507,10 +929,13 @@ const styles = {
 
   // Responsive Design
   '@media (max-width: 768px)': {
-    navbar: {
-      padding: '1.5rem 2rem',
-      flexDirection: 'column',
-      gap: '1rem',
+    compactNavbar: {
+      padding: '1rem 2rem',
+    },
+    
+    navbarLine: {
+      left: '2rem',
+      right: '2rem',
     },
     
     mainContent: {
@@ -555,10 +980,32 @@ const styles = {
       textAlign: 'center',
       gap: '1rem',
     },
+
+    processSection: {
+      padding: '4rem 2rem',
+    },
+
+    processSteps: {
+      gridTemplateColumns: '1fr',
+      gap: '3rem',
+    },
+
+    processLine: {
+      display: 'none',
+    },
+
+    footer: {
+      padding: '3rem 2rem 2rem',
+    },
+
+    footerContent: {
+      gridTemplateColumns: '1fr',
+      gap: '2rem',
+    },
   },
 };
 
-// Add hover effects and staggered animations with CSS
+// Add hover effects with CSS
 if (typeof document !== 'undefined') {
   const style = document.createElement('style');
   style.textContent = `
@@ -568,48 +1015,23 @@ if (typeof document !== 'undefined') {
     }
     
     .service-card:hover {
-      transform: translateY(-5px) !important;
-      box-shadow: 0 10px 30px rgba(56, 50, 50, 0.47) !important;
+      transform: translateY(-8px) !important;
+      box-shadow: 0 15px 40px rgba(56, 50, 50, 0.6) !important;
     }
 
-    .service-card {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    @media (hover: hover) {
+      .footer li:hover {
+        color: #ffffff !important;
+        transform: translateX(5px) !important;
+      }
     }
 
-    .service-card.animate {
-      opacity: 1;
-      transform: translateY(0);
+    @media (max-width: 768px) {
+      .service-card:hover {
+        transform: none !important;
+        box-shadow: none !important;
+      }
     }
-
-    .service-card[data-delay="0.1"] { transition-delay: 0.1s; }
-    .service-card[data-delay="0.2"] { transition-delay: 0.2s; }
-    .service-card[data-delay="0.3"] { transition-delay: 0.3s; }
-    .service-card[data-delay="0.4"] { transition-delay: 0.4s; }
-    .service-card[data-delay="0.5"] { transition-delay: 0.5s; }
   `;
   document.head.appendChild(style);
-
-  // Animate cards when services section becomes visible
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const cards = entry.target.querySelectorAll('.service-card');
-        setTimeout(() => {
-          cards.forEach((card) => {
-            card.classList.add('animate');
-          });
-        }, 200);
-      }
-    });
-  }, { threshold: 0.2 });
-
-  // Start observing when DOM is ready
-  setTimeout(() => {
-    const servicesSection = document.getElementById('services-section');
-    if (servicesSection) {
-      observer.observe(servicesSection);
-    }
-  }, 100);
 }
