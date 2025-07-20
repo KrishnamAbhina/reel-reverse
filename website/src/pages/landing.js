@@ -2,9 +2,28 @@ import React, { useEffect, useState } from 'react';
 
 const Landing = () => {
   const [loaded, setLoaded] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [servicesVisible, setServicesVisible] = useState(false);
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 300);
+
+    // Scroll detection
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setScrolled(scrollTop > 100);
+
+      // Check if services section is in view
+      const servicesSection = document.getElementById('services-section');
+      if (servicesSection) {
+        const rect = servicesSection.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        setServicesVisible(isVisible);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -16,7 +35,7 @@ const Landing = () => {
           <a href="#" style={styles.navLink} className="nav-link">Services</a>
         </div>
         
-        <div style={styles.logo}>.REEL REVERSE.</div>
+        <div style={styles.logo}>REEL REVERSE</div>
         
         <div style={styles.navRight}>
           <a href="#" style={styles.navLink} className="nav-link">Cases</a>
@@ -56,7 +75,15 @@ const Landing = () => {
       <div style={styles.titleDivider}></div>
 
       {/* What We Do Best Section */}
-      <section style={styles.servicesSection}>
+      <section 
+        id="services-section"
+        style={{
+          ...styles.servicesSection,
+          opacity: servicesVisible ? 1 : 0,
+          transform: servicesVisible ? 'translateY(0)' : 'translateY(50px)',
+          transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+        }}
+      >
         <div style={styles.servicesContainer}>
           <h2 style={styles.servicesTitle}>What We Do Best</h2>
           <p style={styles.servicesSubtitle}>
@@ -66,79 +93,92 @@ const Landing = () => {
 
           <div style={styles.servicesGrid}>
             {/* Data-Backed Strategy */}
-            <div style={{...styles.serviceCard, ...styles.largeCard}} className="service-card">
+            <div 
+              style={{...styles.serviceCard, ...styles.compactCard}} 
+              className="service-card"
+              data-delay="0"
+            >
               <div style={styles.cardIcon}>
                 <div style={styles.binocularsIcon}></div>
               </div>
-              <h3 style={styles.cardTitle}>Data-Backed<br />Strategy</h3>
+              <h3 style={styles.cardTitle}>Data-Backed Strategy</h3>
               <p style={styles.cardDescription}>
-                We craft marketing plans built on real insights,<br />
-                not guesswork—so every move has purpose.
+                We craft marketing plans built on real insights, not guesswork.
               </p>
             </div>
 
             {/* Targeted Campaigns */}
-            <div style={{...styles.serviceCard, ...styles.mediumCard}} className="service-card">
+            <div 
+              style={{...styles.serviceCard, ...styles.compactCard}} 
+              className="service-card"
+              data-delay="0.1"
+            >
               <div style={styles.cardIcon}>
                 <div style={styles.targetIcon}></div>
               </div>
-              <h3 style={styles.cardTitle}>Targeted<br />Campaigns</h3>
+              <h3 style={styles.cardTitle}>Targeted Campaigns</h3>
               <p style={styles.cardDescription}>
-                Reach the right audience at the right time<br />
-                with campaigns that convert across every<br />
-                platform.
+                Reach the right audience at the right time with campaigns that convert.
               </p>
             </div>
 
             {/* Social Media Management */}
-            <div style={{...styles.serviceCard, ...styles.smallCard}} className="service-card">
+            <div 
+              style={{...styles.serviceCard, ...styles.compactCard}} 
+              className="service-card"
+              data-delay="0.2"
+            >
               <div style={styles.cardIcon}>
                 <div style={styles.headphonesIcon}></div>
               </div>
-              <h3 style={styles.cardTitle}>Social Media<br />Management</h3>
+              <h3 style={styles.cardTitle}>Social Media Management</h3>
               <p style={styles.cardDescription}>
-                From content<br />
-                calendars to<br />
-                engagement boosts.
+                From content calendars to engagement boosts.
               </p>
             </div>
 
             {/* SEO & Content Marketing */}
-            <div style={{...styles.serviceCard, ...styles.smallCard}} className="service-card">
+            <div 
+              style={{...styles.serviceCard, ...styles.compactCard}} 
+              className="service-card"
+              data-delay="0.3"
+            >
               <div style={styles.cardIcon}>
                 <div style={styles.searchIcon}></div>
               </div>
-              <h3 style={styles.cardTitle}>SEO & Content<br />Marketing</h3>
+              <h3 style={styles.cardTitle}>SEO & Content Marketing</h3>
               <p style={styles.cardDescription}>
-                Boost visibility and authority<br />
-                with content that informs,<br />
-                resonates, and delivers<br />
-                long-term value.
+                Boost visibility and authority with content that delivers value.
               </p>
             </div>
 
             {/* Creative Branding */}
-            <div style={{...styles.serviceCard, ...styles.mediumCard}} className="service-card">
+            <div 
+              style={{...styles.serviceCard, ...styles.compactCard}} 
+              className="service-card"
+              data-delay="0.4"
+            >
               <div style={styles.cardIcon}>
                 <div style={styles.sphereIcon}></div>
               </div>
-              <h3 style={styles.cardTitle}>Creative<br />Branding</h3>
+              <h3 style={styles.cardTitle}>Creative Branding</h3>
               <p style={styles.cardDescription}>
-                Develop a distinctive brand voice,<br />
-                messaging, and brand identity that<br />
-                speaks your language.
+                Develop a distinctive brand voice and identity.
               </p>
             </div>
 
             {/* Performance Analytics */}
-            <div style={{...styles.serviceCard, ...styles.smallCard}} className="service-card">
+            <div 
+              style={{...styles.serviceCard, ...styles.compactCard}} 
+              className="service-card"
+              data-delay="0.5"
+            >
               <div style={styles.cardIcon}>
                 <div style={styles.chartIcon}></div>
               </div>
               <h3 style={styles.cardTitle}>Performance Analytics</h3>
               <p style={styles.cardDescription}>
-                Track results in real-time and adapt fast—<br />
-                because great marketing never stands still.
+                Track results in real-time and adapt fast.
               </p>
             </div>
           </div>
@@ -146,7 +186,14 @@ const Landing = () => {
       </section>
 
       {/* Scroll Indicator */}
-      <div style={styles.scrollIndicator}>
+      <div 
+        style={{
+          ...styles.scrollIndicator,
+          opacity: scrolled ? 0 : 1,
+          transform: scrolled ? 'translateX(-50%) translateY(20px)' : 'translateX(-50%) translateY(0)',
+          transition: 'opacity 0.5s ease-out, transform 0.5s ease-out',
+        }}
+      >
         <div style={styles.scrollText}>SCROLL FOR MORE</div>
       </div>
     </div>
@@ -184,12 +231,12 @@ const styles = {
   // Thin line below navbar
   navbarLine: {
     position: 'fixed',
-    top: '6rem',
+    bottom: '26.5rem',
     left: 0,
     right: 0,
-    height: '1px',
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    zIndex: 99,
+    height: '0.5px',
+    backgroundColor: 'rgba(255, 255, 255, 0.14)',
+    zIndex: 40,
   },
 
   navLeft: {
@@ -206,9 +253,9 @@ const styles = {
     position: 'relative',
     color: 'white',
     textDecoration: 'none',
-    paddingBottom: '2px',
+    paddingBottom: '1px',
     fontSize: '0.95rem',
-    fontWeight: 400,
+    fontWeight: 300,
     letterSpacing: '0.5px',
     transition: 'all 0.3s ease',
     cursor: 'pointer',
@@ -216,9 +263,9 @@ const styles = {
 
   logo: {
     fontSize: '1.1rem',
-    fontWeight: '600',
+    fontWeight: '400',
     letterSpacing: '2px',
-    color: '#ffffff',
+    color: '#ffffffff',
   },
 
   // Main Content
@@ -281,7 +328,7 @@ const styles = {
   },
 
   servicesContainer: {
-    maxWidth: '1200px',
+    maxWidth: '1000px',
     margin: '0 auto',
   },
 
@@ -299,109 +346,99 @@ const styles = {
     lineHeight: '1.6',
     textAlign: 'center',
     color: '#888888',
-    marginBottom: '4rem',
+    marginBottom: '3rem',
     fontWeight: '300',
   },
 
   servicesGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-    gap: '1.5rem',
-    gridAutoRows: 'minmax(200px, auto)',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gap: '1.2rem',
+    maxWidth: '100%',
   },
 
   serviceCard: {
     backgroundColor: '#1a1a1a',
-    borderRadius: '16px',
-    padding: '2rem',
+    borderRadius: '12px',
+    padding: '1.5rem',
     position: 'relative',
     overflow: 'hidden',
     border: '1px solid rgba(255, 255, 255, 0.1)',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
   },
 
-  largeCard: {
-    gridColumn: 'span 1',
-    gridRow: 'span 2',
-  },
-
-  mediumCard: {
-    gridColumn: 'span 1',
-    gridRow: 'span 1',
-  },
-
-  smallCard: {
-    gridColumn: 'span 1',
-    gridRow: 'span 1',
+  compactCard: {
+    minHeight: '200px',
+    maxHeight: '220px',
   },
 
   cardIcon: {
-    width: '60px',
-    height: '60px',
-    marginBottom: '1.5rem',
+    width: '50px',
+    height: '50px',
+    marginBottom: '1rem',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
 
   cardTitle: {
-    fontSize: '1.5rem',
+    fontSize: '1.2rem',
     fontWeight: '600',
-    marginBottom: '1rem',
+    marginBottom: '0.8rem',
     color: '#ffffff',
-    lineHeight: '1.2',
+    lineHeight: '1.3',
   },
 
   cardDescription: {
-    fontSize: '0.9rem',
-    lineHeight: '1.5',
+    fontSize: '0.85rem',
+    lineHeight: '1.4',
     color: '#cccccc',
-    fontWeight: '300',
+    fontWeight: '200',
   },
 
   // Icons (simplified geometric shapes)
   binocularsIcon: {
-    width: '40px',
-    height: '25px',
+    width: '35px',
+    height: '22px',
     backgroundColor: '#666',
-    borderRadius: '8px',
+    borderRadius: '6px',
     position: 'relative',
   },
 
   targetIcon: {
-    width: '40px',
-    height: '40px',
-    border: '3px solid #666',
+    width: '35px',
+    height: '35px',
+    border: '2px solid #666',
     borderRadius: '50%',
     position: 'relative',
   },
 
   headphonesIcon: {
-    width: '35px',
-    height: '35px',
+    width: '32px',
+    height: '32px',
     backgroundColor: '#666',
     borderRadius: '50% 50% 0 0',
   },
 
   searchIcon: {
-    width: '35px',
-    height: '35px',
-    border: '3px solid #666',
+    width: '32px',
+    height: '32px',
+    border: '2px solid #666',
     borderRadius: '50%',
     position: 'relative',
   },
 
   sphereIcon: {
-    width: '40px',
-    height: '40px',
+    width: '35px',
+    height: '35px',
     backgroundColor: '#666',
     borderRadius: '50%',
     background: 'linear-gradient(135deg, #666 0%, #444 100%)',
   },
 
   chartIcon: {
-    width: '40px',
-    height: '30px',
+    width: '35px',
+    height: '28px',
     backgroundColor: '#666',
     borderRadius: '50%',
     clipPath: 'polygon(0 100%, 25% 60%, 50% 80%, 75% 40%, 100% 60%, 100% 100%)',
@@ -417,6 +454,7 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     zIndex: 100,
+    pointerEvents: 'none',
   },
 
   scrollText: {
@@ -457,15 +495,10 @@ const styles = {
       gridTemplateColumns: '1fr',
       gap: '1rem',
     },
-
-    largeCard: {
-      gridColumn: 'span 1',
-      gridRow: 'span 1',
-    },
   },
 };
 
-// Add hover effects with CSS
+// Add hover effects and staggered animations with CSS
 if (typeof document !== 'undefined') {
   const style = document.createElement('style');
   style.textContent = `
@@ -476,8 +509,47 @@ if (typeof document !== 'undefined') {
     
     .service-card:hover {
       transform: translateY(-5px) !important;
-      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1) !important;
+      box-shadow: 0 10px 30px rgba(56, 50, 50, 0.47) !important;
     }
+
+    .service-card {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .service-card.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .service-card[data-delay="0.1"] { transition-delay: 0.1s; }
+    .service-card[data-delay="0.2"] { transition-delay: 0.2s; }
+    .service-card[data-delay="0.3"] { transition-delay: 0.3s; }
+    .service-card[data-delay="0.4"] { transition-delay: 0.4s; }
+    .service-card[data-delay="0.5"] { transition-delay: 0.5s; }
   `;
   document.head.appendChild(style);
+
+  // Animate cards when services section becomes visible
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const cards = entry.target.querySelectorAll('.service-card');
+        setTimeout(() => {
+          cards.forEach((card) => {
+            card.classList.add('animate');
+          });
+        }, 200);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  // Start observing when DOM is ready
+  setTimeout(() => {
+    const servicesSection = document.getElementById('services-section');
+    if (servicesSection) {
+      observer.observe(servicesSection);
+    }
+  }, 100);
 }
