@@ -406,18 +406,18 @@ const styles = {
     backgroundColor: 'transparent',
     borderRight: '1px solid rgba(255, 255, 255, 0.1)',
     borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-    padding: '3rem 2rem',
+    padding: '2rem 1.5rem',
     position: 'relative',
     overflow: 'hidden',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     display: 'flex',
     alignItems: 'flex-start',
-    gap: '2rem',
+    gap: '1.5rem',
   },
 
   serviceIcon: {
-    width: '60px',
-    height: '60px',
+    width: '50px',
+    height: '50px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -429,40 +429,40 @@ const styles = {
   },
 
   serviceTitle: {
-    fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)',
+    fontSize: 'clamp(1.1rem, 2.2vw, 1.3rem)',
     fontWeight: '600',
-    marginBottom: '1rem',
+    marginBottom: '0.8rem',
     color: '#ffffff',
     letterSpacing: '1px',
   },
 
   serviceDescription: {
-    fontSize: 'clamp(0.85rem, 1.5vw, 0.95rem)',
-    lineHeight: '1.6',
+    fontSize: 'clamp(0.8rem, 1.3vw, 0.9rem)',
+    lineHeight: '1.5',
     color: '#cccccc',
     fontWeight: '300',
   },
 
   // Service Icons
   brandingIcon: {
-    width: '40px',
-    height: '40px',
+    width: '35px',
+    height: '35px',
     border: '3px solid rgba(255, 255, 255, 0.3)',
     borderRadius: '50%',
     position: 'relative',
   },
 
   designIcon: {
-    width: '40px',
-    height: '40px',
+    width: '35px',
+    height: '35px',
     position: 'relative',
     border: '2px solid rgba(255, 255, 255, 0.6)',
     transform: 'rotate(45deg)',
   },
 
   videoIcon: {
-    width: '40px',
-    height: '40px',
+    width: '35px',
+    height: '35px',
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
@@ -472,8 +472,8 @@ const styles = {
   },
 
   contentIcon: {
-    width: '40px',
-    height: '40px',
+    width: '35px',
+    height: '35px',
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
